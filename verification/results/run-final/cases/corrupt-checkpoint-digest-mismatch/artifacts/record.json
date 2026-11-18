@@ -1,0 +1,88 @@
+{
+  "artifacts": {},
+  "case": "corrupt-checkpoint-digest-mismatch",
+  "corrupt_flip": false,
+  "description": "Checkpoint payload changed, recorded digest stale.",
+  "deterministic_boundary": true,
+  "events": [
+    {
+      "message": "case start",
+      "t": 1794988240.367
+    }
+  ],
+  "group": "corruption",
+  "observation": {
+    "durable_floor": {
+      "row_keys": [],
+      "sequence": null
+    },
+    "exit_code": 1,
+    "log_tail": "2026/11/18 07:50:40 ERROR lamina stopped error=\"checkpoint: image format or digest mismatch\"\n",
+    "oracle": {
+      "checkpoint_valid": false,
+      "durable_sequences": [],
+      "head": null,
+      "image_sequence": null,
+      "journal_sequence_end": null,
+      "outcome": "refuse",
+      "reason": "checkpoint invalid: image format or digest mismatch",
+      "relations": [],
+      "rows": {},
+      "tail_bytes": 0
+    },
+    "started": false
+  },
+  "observations": {
+    "classification": "refused_as_required",
+    "classification_detail": "corruption rejected at startup, as the format requires",
+    "mutated_offset": 121,
+    "oracle_outcome": "refuse",
+    "oracle_reason": "checkpoint invalid: image format or digest mismatch",
+    "post_fault_files": {
+      "checkpoint.lmi": {
+        "sha256": "c837869e2ba8fb20e0ccb805b176bf90e4f41f58249ee29529b6a7564c17e833",
+        "size": 725
+      },
+      "journal.lmw": {
+        "sha256": "55e4bd97d5f0add9c089efc26e16713a0b5fb541483054fb49486b8bc73b50cd",
+        "size": 1031
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "post_recovery_files": {
+      "checkpoint.lmi": {
+        "sha256": "c837869e2ba8fb20e0ccb805b176bf90e4f41f58249ee29529b6a7564c17e833",
+        "size": 725
+      },
+      "journal.lmw": {
+        "sha256": "55e4bd97d5f0add9c089efc26e16713a0b5fb541483054fb49486b8bc73b50cd",
+        "size": 1031
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "pre_fault_files": {
+      "checkpoint.lmi": {
+        "sha256": "67e9a3a74b1001135e225ceca05b7658817832a455f886a4e4ac9c4f38e245c0",
+        "size": 725
+      },
+      "journal.lmw": {
+        "sha256": "55e4bd97d5f0add9c089efc26e16713a0b5fb541483054fb49486b8bc73b50cd",
+        "size": 1031
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "server_started": false,
+    "setup_head": 3
+  },
+  "path_under_test": "corruption-rejection",
+  "stop": null
+}

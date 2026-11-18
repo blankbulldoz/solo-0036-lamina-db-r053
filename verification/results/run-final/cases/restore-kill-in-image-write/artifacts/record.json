@@ -1,0 +1,189 @@
+{
+  "artifacts": {
+    "restore.log.tail": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "source-backup.lmi": {
+      "bytes": 817,
+      "sha256": "e0976334eb57af1b60c9efb55d1961801ec7e97f85c78a7517f52c83f6a53852"
+    }
+  },
+  "case": "restore-kill-in-image-write",
+  "corrupt_flip": false,
+  "description": "Kill at the image temp-file write: header exists, no checkpoint bytes.",
+  "deterministic_boundary": true,
+  "events": [
+    {
+      "message": "case start",
+      "t": 1794988237.736
+    }
+  ],
+  "fault_evidence": {
+    "counted": [
+      {
+        "frame_crc_ok": false,
+        "frame_kind": "",
+        "frame_seq": -1,
+        "frame_valid": false,
+        "kind": "write",
+        "len": 16,
+        "nth": 1,
+        "off": 0,
+        "path": "/workspace/verification/results/run-final/work/restore-kill-in-image-write/restored/journal.lmw",
+        "path2": null,
+        "phase": "entry",
+        "result": null,
+        "size_after": null
+      },
+      {
+        "frame_crc_ok": false,
+        "frame_kind": "",
+        "frame_seq": -1,
+        "frame_valid": false,
+        "kind": "write",
+        "len": 16,
+        "nth": 1,
+        "off": 0,
+        "path": "/workspace/verification/results/run-final/work/restore-kill-in-image-write/restored/journal.lmw",
+        "path2": null,
+        "phase": "exit",
+        "result": 16,
+        "size_after": 16
+      },
+      {
+        "frame_crc_ok": false,
+        "frame_kind": "",
+        "frame_seq": -1,
+        "frame_valid": false,
+        "kind": "write",
+        "len": 817,
+        "nth": 2,
+        "off": 0,
+        "path": "/workspace/verification/results/run-final/work/restore-kill-in-image-write/restored/.lamina-image-3365834357",
+        "path2": null,
+        "phase": "entry",
+        "result": null,
+        "size_after": null
+      }
+    ],
+    "fault": {
+      "at": "kill-in",
+      "event": "fault",
+      "kind": "write",
+      "nth": 2,
+      "path": "/workspace/verification/results/run-final/work/restore-kill-in-image-write/restored/.lamina-image-3365834357",
+      "path2": null,
+      "t_ns": 92197121264143,
+      "ts_ms": 7.914
+    },
+    "mutations": [],
+    "snapshots": [
+      {
+        "event": "snapshot_dir",
+        "path": "/workspace/verification/results/run-final/work/restore-kill-in-image-write/restored",
+        "tag": "atfault"
+      },
+      {
+        "bytes": 16,
+        "copy": "/workspace/verification/results/run-final/cases/restore-kill-in-image-write/artifacts/restore-snapshot/journal.lmw.atfault",
+        "event": "snapshot_file",
+        "path": "/workspace/verification/results/run-final/work/restore-kill-in-image-write/restored/journal.lmw",
+        "tag": "atfault"
+      },
+      {
+        "bytes": 0,
+        "copy": "/workspace/verification/results/run-final/cases/restore-kill-in-image-write/artifacts/restore-snapshot/lamina.lock.atfault",
+        "event": "snapshot_file",
+        "path": "/workspace/verification/results/run-final/work/restore-kill-in-image-write/restored/lamina.lock",
+        "tag": "atfault"
+      },
+      {
+        "bytes": 0,
+        "copy": "/workspace/verification/results/run-final/cases/restore-kill-in-image-write/artifacts/restore-snapshot/.lamina-image-3365834357.atfault",
+        "event": "snapshot_file",
+        "path": "/workspace/verification/results/run-final/work/restore-kill-in-image-write/restored/.lamina-image-3365834357",
+        "tag": "atfault"
+      }
+    ],
+    "target_exit": [
+      {
+        "code": 0,
+        "event": "target_exit",
+        "exited": false,
+        "signal": 9,
+        "ts_ms": 37.727
+      }
+    ]
+  },
+  "fault_fired": true,
+  "group": "restore",
+  "observation": {
+    "durable_floor": {
+      "row_keys": [],
+      "sequence": null
+    },
+    "exit_code": 1,
+    "log_tail": "2026/11/18 07:50:37 ERROR lamina stopped error=\"journal requires newer checkpoint\"\n",
+    "oracle": {
+      "checkpoint_valid": null,
+      "durable_sequences": [],
+      "head": null,
+      "image_sequence": null,
+      "journal_sequence_end": null,
+      "outcome": "refuse",
+      "reason": "journal requires checkpoint at base 3, but none is installed",
+      "relations": [],
+      "rows": {},
+      "tail_bytes": 0
+    },
+    "started": false
+  },
+  "observations": {
+    "artifact_restore.log.tail": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "artifact_source-backup.lmi": {
+      "bytes": 817,
+      "sha256": "e0976334eb57af1b60c9efb55d1961801ec7e97f85c78a7517f52c83f6a53852"
+    },
+    "backup_rows": [
+      "int:1",
+      "int:2",
+      "int:3"
+    ],
+    "classification": "restore_left_refusable_state",
+    "classification_detail": "journal requires checkpoint at base 3, but none is installed",
+    "restore_input_sha256": "e0976334eb57af1b60c9efb55d1961801ec7e97f85c78a7517f52c83f6a53852",
+    "restore_installed_files": {
+      ".lamina-image-3365834357": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "journal.lmw": {
+        "sha256": "6c6aeb069809cb5a8af7248e59a379caf7c67db14b262c8c3871017693a2fc57",
+        "size": 16
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "restore_retry_same_dir_log": "2026/11/18 07:50:37 ERROR lamina stopped error=\"restore requires a new directory: mkdir /workspace/verification/results/run-final/work/restore-kill-in-image-write/restored: file exists\"\n",
+    "restore_retry_same_dir_started": false,
+    "restored_row_keys": [],
+    "source_backup_bytes": 817,
+    "source_backup_sequence": 3,
+    "source_backup_sha256": "e0976334eb57af1b60c9efb55d1961801ec7e97f85c78a7517f52c83f6a53852",
+    "source_row_keys": [
+      "int:1",
+      "int:2",
+      "int:3"
+    ]
+  },
+  "path_under_test": "restore-install",
+  "restore_dir_present": true,
+  "stop": "kill-in:2:write",
+  "tracer_exit": 0
+}

@@ -1,0 +1,84 @@
+{
+  "catalog": {
+    "indexes": {
+      "by_band": {
+        "column": "band",
+        "created": 3,
+        "name": "by_band",
+        "relation": "spectra",
+        "unique": false
+      }
+    },
+    "relations": {
+      "spectra": {
+        "columns": [
+          {
+            "name": "sample",
+            "nullable": false,
+            "type": "int"
+          },
+          {
+            "name": "band",
+            "nullable": false,
+            "type": "text"
+          },
+          {
+            "name": "amplitude",
+            "nullable": true,
+            "type": "int"
+          },
+          {
+            "name": "valid",
+            "nullable": false,
+            "type": "bool"
+          }
+        ],
+        "created": 1,
+        "name": "spectra",
+        "primary": "sample"
+      }
+    }
+  },
+  "format": 1,
+  "horizon": 0,
+  "sequence": 3,
+  "store": {
+    "tables": {
+      "spectra": {
+        "int:1": [
+          {
+            "row": {
+              "amplitude": 10,
+              "band": "b1",
+              "sample": 1,
+              "valid": true
+            },
+            "sequence": 2
+          }
+        ],
+        "int:2": [
+          {
+            "row": {
+              "amplitude": 20,
+              "band": "b2",
+              "sample": 2,
+              "valid": true
+            },
+            "sequence": 2
+          }
+        ],
+        "int:3": [
+          {
+            "row": {
+              "amplitude": 30,
+              "band": "b3",
+              "sample": 3,
+              "valid": true
+            },
+            "sequence": 2
+          }
+        ]
+      }
+    }
+  }
+}

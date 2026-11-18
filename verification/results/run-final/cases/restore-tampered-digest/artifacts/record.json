@@ -1,0 +1,67 @@
+{
+  "artifacts": {
+    "restore.log.tail": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "source-backup.lmi": {
+      "bytes": 817,
+      "sha256": "e0976334eb57af1b60c9efb55d1961801ec7e97f85c78a7517f52c83f6a53852"
+    }
+  },
+  "case": "restore-tampered-digest",
+  "corrupt_flip": false,
+  "description": "Backup envelope digest does not match payload: restore must refuse and leave no directory.",
+  "deterministic_boundary": true,
+  "events": [
+    {
+      "message": "case start",
+      "t": 1794988239.298
+    }
+  ],
+  "fault_evidence": {
+    "counted": [],
+    "fault": null,
+    "mutations": [],
+    "snapshots": [],
+    "target_exit": [
+      {
+        "code": 1,
+        "event": "target_exit",
+        "exited": true,
+        "signal": 0,
+        "ts_ms": 3.615
+      }
+    ]
+  },
+  "fault_fired": null,
+  "group": "restore",
+  "observations": {
+    "artifact_restore.log.tail": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "artifact_source-backup.lmi": {
+      "bytes": 817,
+      "sha256": "e0976334eb57af1b60c9efb55d1961801ec7e97f85c78a7517f52c83f6a53852"
+    },
+    "backup_rows": [
+      "int:1",
+      "int:2",
+      "int:3"
+    ],
+    "classification": "restore_aborted_cleanly",
+    "classification_detail": "restore made no directory; source backup untouched",
+    "restore_input_sha256": "e0976334eb57af1b60c9efb55d1961801ec7e97f85c78a7517f52c83f6a53852",
+    "restore_input_tampered_sha256": "9abfc6819b343939f0e588e3aaeab0f387a825d017f48ed4f1c16a396cbb54b3",
+    "restore_installed_files": {},
+    "source_backup_bytes": 817,
+    "source_backup_sequence": 3,
+    "source_backup_sha256": "e0976334eb57af1b60c9efb55d1961801ec7e97f85c78a7517f52c83f6a53852",
+    "tamper": "digest replaced with zeros"
+  },
+  "path_under_test": "restore-install",
+  "restore_dir_present": false,
+  "stop": null,
+  "tracer_exit": 0
+}

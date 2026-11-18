@@ -1,0 +1,89 @@
+{
+  "artifacts": {},
+  "case": "corrupt-journal-sequence-gap",
+  "corrupt_flip": false,
+  "description": "Internally valid frame with sequence discontinuity.",
+  "deterministic_boundary": true,
+  "events": [
+    {
+      "message": "case start",
+      "t": 1794988239.814
+    }
+  ],
+  "group": "corruption",
+  "observation": {
+    "durable_floor": {
+      "row_keys": [],
+      "sequence": null
+    },
+    "exit_code": 1,
+    "log_tail": "2026/11/18 07:50:39 ERROR lamina stopped error=\"journal sequence or format mismatch at 730\"\n",
+    "oracle": {
+      "checkpoint_valid": null,
+      "durable_sequences": [],
+      "head": null,
+      "image_sequence": null,
+      "journal_sequence_end": null,
+      "outcome": "refuse",
+      "reason": "journal invalid: sequence discontinuity at offset 730: expected 3, found 4",
+      "relations": [],
+      "rows": {},
+      "tail_bytes": 0
+    },
+    "started": false
+  },
+  "observations": {
+    "classification": "refused_as_required",
+    "classification_detail": "corruption rejected at startup, as the format requires",
+    "mutated_offset": 730,
+    "mutated_sequence": 4,
+    "oracle_outcome": "refuse",
+    "oracle_reason": "journal invalid: sequence discontinuity at offset 730: expected 3, found 4",
+    "post_fault_files": {
+      "checkpoint.lmi": {
+        "sha256": "67e9a3a74b1001135e225ceca05b7658817832a455f886a4e4ac9c4f38e245c0",
+        "size": 725
+      },
+      "journal.lmw": {
+        "sha256": "36b505e633ae65939ed28290f33d624fddaf07b710f726cc46f95f6a7cdd98d5",
+        "size": 1031
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "post_recovery_files": {
+      "checkpoint.lmi": {
+        "sha256": "67e9a3a74b1001135e225ceca05b7658817832a455f886a4e4ac9c4f38e245c0",
+        "size": 725
+      },
+      "journal.lmw": {
+        "sha256": "36b505e633ae65939ed28290f33d624fddaf07b710f726cc46f95f6a7cdd98d5",
+        "size": 1031
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "pre_fault_files": {
+      "checkpoint.lmi": {
+        "sha256": "67e9a3a74b1001135e225ceca05b7658817832a455f886a4e4ac9c4f38e245c0",
+        "size": 725
+      },
+      "journal.lmw": {
+        "sha256": "5fa9a9ee0517fc6217ff586395117c8843a02aacaa4375806623e3e2ab7c71eb",
+        "size": 1031
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "server_started": false,
+    "setup_head": 3
+  },
+  "path_under_test": "corruption-rejection",
+  "stop": null
+}

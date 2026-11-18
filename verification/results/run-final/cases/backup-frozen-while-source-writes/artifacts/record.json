@@ -1,0 +1,503 @@
+{
+  "artifacts": {
+    "backup-bytes-unchanged-check.bin": {
+      "bytes": 1069,
+      "sha256": "933af9efd8d493b97a92fec2dda98726e32f271f61e1507ffc69ca3fc1a129c4"
+    },
+    "backup.lmi": {
+      "bytes": 1069,
+      "sha256": "933af9efd8d493b97a92fec2dda98726e32f271f61e1507ffc69ca3fc1a129c4"
+    }
+  },
+  "case": "backup-frozen-while-source-writes",
+  "corrupt_flip": false,
+  "description": "Backup taken while a concurrent commit lands; the returned image must match journal replay at its own sequence.",
+  "deterministic_boundary": true,
+  "events": [
+    {
+      "message": "case start",
+      "t": 1794988236.816
+    }
+  ],
+  "group": "backup",
+  "observation": {
+    "catalog": {
+      "indexes": [],
+      "relations": [
+        {
+          "columns": [
+            {
+              "name": "sample",
+              "nullable": false,
+              "type": "int"
+            },
+            {
+              "name": "band",
+              "nullable": false,
+              "type": "text"
+            },
+            {
+              "name": "amplitude",
+              "nullable": true,
+              "type": "int"
+            },
+            {
+              "name": "valid",
+              "nullable": false,
+              "type": "bool"
+            }
+          ],
+          "created": 1,
+          "name": "spectra",
+          "primary": "sample"
+        }
+      ]
+    },
+    "catalog_status": 200,
+    "durable_floor": {
+      "row_keys": [
+        "int:1",
+        "int:2",
+        "int:3",
+        "int:30",
+        "int:31",
+        "int:4",
+        "int:400",
+        "int:5"
+      ],
+      "sequence": 5
+    },
+    "durable_floor_read": {
+      "rows": [
+        {
+          "amplitude": 10,
+          "band": "b1",
+          "sample": 1,
+          "valid": true
+        },
+        {
+          "amplitude": 20,
+          "band": "b2",
+          "sample": 2,
+          "valid": true
+        },
+        {
+          "amplitude": 30,
+          "band": "b3",
+          "sample": 3,
+          "valid": true
+        },
+        {
+          "amplitude": 300,
+          "band": "b30",
+          "sample": 30,
+          "valid": true
+        },
+        {
+          "amplitude": 310,
+          "band": "b31",
+          "sample": 31,
+          "valid": true
+        },
+        {
+          "amplitude": 40,
+          "band": "b4",
+          "sample": 4,
+          "valid": true
+        },
+        {
+          "amplitude": 4000,
+          "band": "b400",
+          "sample": 400,
+          "valid": true
+        },
+        {
+          "amplitude": 50,
+          "band": "b5",
+          "sample": 5,
+          "valid": true
+        }
+      ],
+      "status": 200
+    },
+    "exit_code": null,
+    "history": {
+      "2": {
+        "rows": [
+          {
+            "amplitude": 10,
+            "band": "b1",
+            "sample": 1,
+            "valid": true
+          },
+          {
+            "amplitude": 20,
+            "band": "b2",
+            "sample": 2,
+            "valid": true
+          },
+          {
+            "amplitude": 30,
+            "band": "b3",
+            "sample": 3,
+            "valid": true
+          }
+        ],
+        "status": 200
+      },
+      "3": {
+        "rows": [
+          {
+            "amplitude": 10,
+            "band": "b1",
+            "sample": 1,
+            "valid": true
+          },
+          {
+            "amplitude": 20,
+            "band": "b2",
+            "sample": 2,
+            "valid": true
+          },
+          {
+            "amplitude": 30,
+            "band": "b3",
+            "sample": 3,
+            "valid": true
+          },
+          {
+            "amplitude": 40,
+            "band": "b4",
+            "sample": 4,
+            "valid": true
+          },
+          {
+            "amplitude": 50,
+            "band": "b5",
+            "sample": 5,
+            "valid": true
+          }
+        ],
+        "status": 200
+      },
+      "4": {
+        "rows": [
+          {
+            "amplitude": 10,
+            "band": "b1",
+            "sample": 1,
+            "valid": true
+          },
+          {
+            "amplitude": 20,
+            "band": "b2",
+            "sample": 2,
+            "valid": true
+          },
+          {
+            "amplitude": 30,
+            "band": "b3",
+            "sample": 3,
+            "valid": true
+          },
+          {
+            "amplitude": 300,
+            "band": "b30",
+            "sample": 30,
+            "valid": true
+          },
+          {
+            "amplitude": 310,
+            "band": "b31",
+            "sample": 31,
+            "valid": true
+          },
+          {
+            "amplitude": 40,
+            "band": "b4",
+            "sample": 4,
+            "valid": true
+          },
+          {
+            "amplitude": 50,
+            "band": "b5",
+            "sample": 5,
+            "valid": true
+          }
+        ],
+        "status": 200
+      },
+      "5": {
+        "rows": [
+          {
+            "amplitude": 10,
+            "band": "b1",
+            "sample": 1,
+            "valid": true
+          },
+          {
+            "amplitude": 20,
+            "band": "b2",
+            "sample": 2,
+            "valid": true
+          },
+          {
+            "amplitude": 30,
+            "band": "b3",
+            "sample": 3,
+            "valid": true
+          },
+          {
+            "amplitude": 300,
+            "band": "b30",
+            "sample": 30,
+            "valid": true
+          },
+          {
+            "amplitude": 310,
+            "band": "b31",
+            "sample": 31,
+            "valid": true
+          },
+          {
+            "amplitude": 40,
+            "band": "b4",
+            "sample": 4,
+            "valid": true
+          },
+          {
+            "amplitude": 4000,
+            "band": "b400",
+            "sample": 400,
+            "valid": true
+          },
+          {
+            "amplitude": 50,
+            "band": "b5",
+            "sample": 5,
+            "valid": true
+          }
+        ],
+        "status": 200
+      }
+    },
+    "log_tail": "",
+    "oracle": {
+      "checkpoint_valid": true,
+      "durable_sequences": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "head": 5,
+      "image_sequence": 2,
+      "journal_sequence_end": 5,
+      "outcome": "start",
+      "reason": "clean recovery",
+      "relations": [
+        "spectra"
+      ],
+      "rows": {
+        "spectra": [
+          "int:1",
+          "int:2",
+          "int:3",
+          "int:30",
+          "int:31",
+          "int:4",
+          "int:400",
+          "int:5"
+        ]
+      },
+      "tail_bytes": 0
+    },
+    "rows": {
+      "spectra": {
+        "rows": [
+          {
+            "amplitude": 10,
+            "band": "b1",
+            "sample": 1,
+            "valid": true
+          },
+          {
+            "amplitude": 20,
+            "band": "b2",
+            "sample": 2,
+            "valid": true
+          },
+          {
+            "amplitude": 30,
+            "band": "b3",
+            "sample": 3,
+            "valid": true
+          },
+          {
+            "amplitude": 300,
+            "band": "b30",
+            "sample": 30,
+            "valid": true
+          },
+          {
+            "amplitude": 310,
+            "band": "b31",
+            "sample": 31,
+            "valid": true
+          },
+          {
+            "amplitude": 40,
+            "band": "b4",
+            "sample": 4,
+            "valid": true
+          },
+          {
+            "amplitude": 4000,
+            "band": "b400",
+            "sample": 400,
+            "valid": true
+          },
+          {
+            "amplitude": 50,
+            "band": "b5",
+            "sample": 5,
+            "valid": true
+          }
+        ],
+        "status": 200
+      }
+    },
+    "started": true,
+    "stats": {
+      "active": [],
+      "commits_since_open": 0,
+      "conflicts_since_open": 0,
+      "history_base": 0,
+      "horizon": 0,
+      "index_entries": {},
+      "journal_records": 5,
+      "keys": 8,
+      "queries_since_open": 0,
+      "recovered_tail_bytes": 0,
+      "sequence": 5,
+      "versions": 8
+    }
+  },
+  "observations": {
+    "artifact_backup-bytes-unchanged-check.bin": {
+      "bytes": 1069,
+      "sha256": "933af9efd8d493b97a92fec2dda98726e32f271f61e1507ffc69ca3fc1a129c4"
+    },
+    "artifact_backup.lmi": {
+      "bytes": 1069,
+      "sha256": "933af9efd8d493b97a92fec2dda98726e32f271f61e1507ffc69ca3fc1a129c4"
+    },
+    "backup_actual_rows": [
+      "int:1",
+      "int:2",
+      "int:3",
+      "int:30",
+      "int:31",
+      "int:4",
+      "int:5"
+    ],
+    "backup_bytes": 1069,
+    "backup_bytes_stable_after_source_write": true,
+    "backup_expected_rows": [
+      "int:1",
+      "int:2",
+      "int:3",
+      "int:30",
+      "int:31",
+      "int:4",
+      "int:5"
+    ],
+    "backup_http_status": 200,
+    "backup_image_horizon": 0,
+    "backup_image_sequence": 4,
+    "backup_image_valid": true,
+    "backup_matches_journal_replay": true,
+    "backup_sha256": "933af9efd8d493b97a92fec2dda98726e32f271f61e1507ffc69ca3fc1a129c4",
+    "classification": "backup_frozen_and_source_recoverable",
+    "concurrent_commit_status": 200,
+    "post_fault_files": {
+      "checkpoint.lmi": {
+        "sha256": "67e9a3a74b1001135e225ceca05b7658817832a455f886a4e4ac9c4f38e245c0",
+        "size": 725
+      },
+      "journal.lmw": {
+        "sha256": "d3cb5447c32f746ad57b41c4a007d1a0726ef93522ce80edcc7a56bc6de1a912",
+        "size": 1553
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "post_recovery_files": {
+      "checkpoint.lmi": {
+        "sha256": "67e9a3a74b1001135e225ceca05b7658817832a455f886a4e4ac9c4f38e245c0",
+        "size": 725
+      },
+      "journal.lmw": {
+        "sha256": "d3cb5447c32f746ad57b41c4a007d1a0726ef93522ce80edcc7a56bc6de1a912",
+        "size": 1553
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "pre_fault_files": {
+      "checkpoint.lmi": {
+        "sha256": "67e9a3a74b1001135e225ceca05b7658817832a455f886a4e4ac9c4f38e245c0",
+        "size": 725
+      },
+      "journal.lmw": {
+        "sha256": "94086cd4c57bd7ae1eede07c47aa549c8e05719eb5a2dfe4dcef07d32477337f",
+        "size": 1031
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "second_backup_has_new_row": true,
+    "second_backup_sequence": 5,
+    "second_backup_status": 200,
+    "setup_head": 3,
+    "source_after_backup_oracle": {
+      "checkpoint_valid": true,
+      "durable_sequences": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "head": 5,
+      "image_sequence": 2,
+      "journal_sequence_end": 5,
+      "outcome": "start",
+      "reason": "clean recovery",
+      "relations": [
+        "spectra"
+      ],
+      "rows": {
+        "spectra": [
+          "int:1",
+          "int:2",
+          "int:3",
+          "int:30",
+          "int:31",
+          "int:4",
+          "int:400",
+          "int:5"
+        ]
+      },
+      "tail_bytes": 0
+    }
+  },
+  "path_under_test": "backup-install",
+  "stop": null,
+  "trigger_result": null
+}

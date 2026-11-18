@@ -1,0 +1,7 @@
+/workspace/verification/results/run-final/work/restore-kill-after-rename/restored:
+total 8
+drwx------ 1 1000 1000 160 2026-11-18 07:50:38.535246602 +0000 .
+drwxrwxrwx 1 1000 1000 128 2026-11-18 07:50:38.531053991 +0000 ..
+-rw------- 1 1000 1000 817 2026-11-18 07:50:38.533925802 +0000 checkpoint.lmi
+-rw------- 1 1000 1000  16 2026-11-18 07:50:38.531391451 +0000 journal.lmw
+-rw------- 1 1000 1000   0 2026-11-18 07:50:38.531163450 +0000 lamina.lock

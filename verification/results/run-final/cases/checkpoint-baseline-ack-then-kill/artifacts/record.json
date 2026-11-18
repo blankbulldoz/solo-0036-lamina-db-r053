@@ -1,0 +1,326 @@
+{
+  "artifacts": {},
+  "case": "checkpoint-baseline-ack-then-kill",
+  "corrupt_flip": false,
+  "description": "Control: checkpoint returns 200, then SIGKILL. The installed image must be the acknowledged one and must equal journal replay at its sequence.",
+  "deterministic_boundary": true,
+  "events": [
+    {
+      "message": "case start",
+      "t": 1794988234.193
+    }
+  ],
+  "group": "checkpoint",
+  "observation": {
+    "catalog": {
+      "indexes": [],
+      "relations": [
+        {
+          "columns": [
+            {
+              "name": "sample",
+              "nullable": false,
+              "type": "int"
+            },
+            {
+              "name": "band",
+              "nullable": false,
+              "type": "text"
+            },
+            {
+              "name": "amplitude",
+              "nullable": true,
+              "type": "int"
+            },
+            {
+              "name": "valid",
+              "nullable": false,
+              "type": "bool"
+            }
+          ],
+          "created": 1,
+          "name": "spectra",
+          "primary": "sample"
+        }
+      ]
+    },
+    "catalog_status": 200,
+    "durable_floor": {
+      "row_keys": [
+        "int:1",
+        "int:2",
+        "int:3",
+        "int:4",
+        "int:5"
+      ],
+      "sequence": 3
+    },
+    "durable_floor_read": {
+      "rows": [
+        {
+          "amplitude": 10,
+          "band": "b1",
+          "sample": 1,
+          "valid": true
+        },
+        {
+          "amplitude": 20,
+          "band": "b2",
+          "sample": 2,
+          "valid": true
+        },
+        {
+          "amplitude": 30,
+          "band": "b3",
+          "sample": 3,
+          "valid": true
+        },
+        {
+          "amplitude": 40,
+          "band": "b4",
+          "sample": 4,
+          "valid": true
+        },
+        {
+          "amplitude": 50,
+          "band": "b5",
+          "sample": 5,
+          "valid": true
+        }
+      ],
+      "status": 200
+    },
+    "exit_code": null,
+    "history": {
+      "2": {
+        "rows": [
+          {
+            "amplitude": 10,
+            "band": "b1",
+            "sample": 1,
+            "valid": true
+          },
+          {
+            "amplitude": 20,
+            "band": "b2",
+            "sample": 2,
+            "valid": true
+          },
+          {
+            "amplitude": 30,
+            "band": "b3",
+            "sample": 3,
+            "valid": true
+          }
+        ],
+        "status": 200
+      },
+      "3": {
+        "rows": [
+          {
+            "amplitude": 10,
+            "band": "b1",
+            "sample": 1,
+            "valid": true
+          },
+          {
+            "amplitude": 20,
+            "band": "b2",
+            "sample": 2,
+            "valid": true
+          },
+          {
+            "amplitude": 30,
+            "band": "b3",
+            "sample": 3,
+            "valid": true
+          },
+          {
+            "amplitude": 40,
+            "band": "b4",
+            "sample": 4,
+            "valid": true
+          },
+          {
+            "amplitude": 50,
+            "band": "b5",
+            "sample": 5,
+            "valid": true
+          }
+        ],
+        "status": 200
+      }
+    },
+    "log_tail": "",
+    "oracle": {
+      "checkpoint_valid": true,
+      "durable_sequences": [
+        2,
+        3
+      ],
+      "head": 3,
+      "image_sequence": 3,
+      "journal_sequence_end": 3,
+      "outcome": "start",
+      "reason": "clean recovery",
+      "relations": [
+        "spectra"
+      ],
+      "rows": {
+        "spectra": [
+          "int:1",
+          "int:2",
+          "int:3",
+          "int:4",
+          "int:5"
+        ]
+      },
+      "tail_bytes": 0
+    },
+    "rows": {
+      "spectra": {
+        "rows": [
+          {
+            "amplitude": 10,
+            "band": "b1",
+            "sample": 1,
+            "valid": true
+          },
+          {
+            "amplitude": 20,
+            "band": "b2",
+            "sample": 2,
+            "valid": true
+          },
+          {
+            "amplitude": 30,
+            "band": "b3",
+            "sample": 3,
+            "valid": true
+          },
+          {
+            "amplitude": 40,
+            "band": "b4",
+            "sample": 4,
+            "valid": true
+          },
+          {
+            "amplitude": 50,
+            "band": "b5",
+            "sample": 5,
+            "valid": true
+          }
+        ],
+        "status": 200
+      }
+    },
+    "started": true,
+    "stats": {
+      "active": [],
+      "commits_since_open": 0,
+      "conflicts_since_open": 0,
+      "history_base": 0,
+      "horizon": 0,
+      "index_entries": {},
+      "journal_records": 3,
+      "keys": 5,
+      "queries_since_open": 0,
+      "recovered_tail_bytes": 0,
+      "sequence": 3,
+      "versions": 5
+    }
+  },
+  "observations": {
+    "checkpoint_confirmed": true,
+    "checkpoint_http_body": {
+      "sequence": 3
+    },
+    "checkpoint_http_status": 200,
+    "checkpoint_image_valid_after_fault": true,
+    "checkpoint_installed_sequence": 3,
+    "checkpoint_sequence": 3,
+    "classification": "confirmed_and_recovered",
+    "classification_detail": "clean recovery",
+    "post_fault_checkpoint": {
+      "horizon": 0,
+      "present": true,
+      "sequence": 3,
+      "sha256": "a9825f8e3892a595a0cdc8a3c0991485230843662d51347e117b9e2c1a9ca99f",
+      "valid": true
+    },
+    "post_fault_files": {
+      "checkpoint.lmi": {
+        "sha256": "a9825f8e3892a595a0cdc8a3c0991485230843662d51347e117b9e2c1a9ca99f",
+        "size": 893
+      },
+      "journal.lmw": {
+        "sha256": "322948921c767846a993af37eb45061050446b158866e2eaeb8c48c8a0598ed2",
+        "size": 1031
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "post_recovery_checkpoint": {
+      "horizon": 0,
+      "present": true,
+      "sequence": 3,
+      "sha256": "a9825f8e3892a595a0cdc8a3c0991485230843662d51347e117b9e2c1a9ca99f",
+      "valid": true
+    },
+    "post_recovery_files": {
+      "checkpoint.lmi": {
+        "sha256": "a9825f8e3892a595a0cdc8a3c0991485230843662d51347e117b9e2c1a9ca99f",
+        "size": 893
+      },
+      "journal.lmw": {
+        "sha256": "322948921c767846a993af37eb45061050446b158866e2eaeb8c48c8a0598ed2",
+        "size": 1031
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "pre_fault_files": {
+      "checkpoint.lmi": {
+        "sha256": "67e9a3a74b1001135e225ceca05b7658817832a455f886a4e4ac9c4f38e245c0",
+        "size": 725
+      },
+      "journal.lmw": {
+        "sha256": "322948921c767846a993af37eb45061050446b158866e2eaeb8c48c8a0598ed2",
+        "size": 1031
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "replay_sequence_used": 3,
+    "rows_equal_journal_replay": true,
+    "setup_head": 3,
+    "stats_before_checkpoint": {
+      "active": [],
+      "commits_since_open": 2,
+      "conflicts_since_open": 0,
+      "history_base": 0,
+      "horizon": 0,
+      "index_entries": {},
+      "journal_records": 3,
+      "keys": 5,
+      "queries_since_open": 0,
+      "recovered_tail_bytes": 0,
+      "sequence": 3,
+      "versions": 5
+    }
+  },
+  "path_under_test": "checkpoint-replacement",
+  "stop": null,
+  "trigger_result": [
+    200,
+    {
+      "sequence": 3
+    }
+  ]
+}

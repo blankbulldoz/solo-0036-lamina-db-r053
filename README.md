@@ -100,4 +100,17 @@ docker build -t lamina-db .
 docker run --rm -p 127.0.0.1:7386:7386 -v lamina-volume:/data lamina-db
 ```
 
+## 耐久性故障验证
+
+`verification/` 提供独立于服务自述的故障矩阵：用 ptrace 在提交写入/同步、检查点临时文件同步/重命名/目录同步、备份还原安装等有证据的边界冻结并杀死实例，再用独立的日志与镜像解析模型判定“已确认”“可能落盘但未确认”“必须拒绝”三种状态。
+
+```sh
+verification/run.sh              # 构建、先跑负向自检，再跑完整矩阵（3 次重复）
+verification/run.sh --quick      # 单次完整矩阵
+```
+
+输出在 `verification/results/<timestamp>/`，其中 `OBSERVATIONS.md` 是逐例原始观测与结论。参见 `verification/README.md` 与 `verification/coverage.md`。
+
 镜像使用非特权用户 10001。容器工作流需本机镜像构建可用；原生运行不依赖 Docker。持久目录使用 Unix 文件锁，当前不声明 Windows 支持。备份只能缓解存储故障；没有复制、自动切换或加密。
+
+`verification/` 需要 Go 工具链和 C 编译器（ptrace 注入器）；矩阵本身不需要 Docker。

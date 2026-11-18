@@ -1,0 +1,7 @@
+/workspace/verification/results/run-final/work/commit-kill-in-fsync/source:
+total 8
+drwxrwxrwx 1 1000 1000  160 2026-11-18 07:49:30.732467208 +0000 .
+drwxrwxrwx 1 1000 1000   96 2026-11-18 07:49:30.699587069 +0000 ..
+-rw------- 1 1000 1000  725 2026-11-18 07:49:30.730495153 +0000 checkpoint.lmi
+-rw------- 1 1000 1000 1340 2026-11-18 07:49:30.740946932 +0000 journal.lmw
+-rw------- 1 1000 1000    0 2026-11-18 07:49:30.705029023 +0000 lamina.lock

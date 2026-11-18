@@ -1,0 +1,7 @@
+/workspace/verification/results/run-final/work/commit-torn-after-write/source:
+total 8
+drwxrwxrwx 1 1000 1000  160 2026-11-18 07:50:33.467121272 +0000 .
+drwxrwxrwx 1 1000 1000   96 2026-11-18 07:50:33.437585990 +0000 ..
+-rw------- 1 1000 1000  725 2026-11-18 07:50:33.465472386 +0000 checkpoint.lmi
+-rw------- 1 1000 1000 1193 2026-11-18 07:50:33.478773268 +0000 journal.lmw
+-rw------- 1 1000 1000    0 2026-11-18 07:50:33.441813518 +0000 lamina.lock

@@ -1,0 +1,7 @@
+# Built by verification/run.sh; not source.
+tracer/laminad-fault
+
+# Per-case scratch data directories from a run (large, regenerable).
+results/*/work/
+results/selfcheck/
+__pycache__/

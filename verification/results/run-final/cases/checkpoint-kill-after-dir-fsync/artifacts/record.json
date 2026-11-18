@@ -1,0 +1,520 @@
+{
+  "artifacts": {},
+  "case": "checkpoint-kill-after-dir-fsync",
+  "corrupt_flip": false,
+  "description": "Kill after the directory fsync: replacement fully durable but the response was not sent.",
+  "deterministic_boundary": true,
+  "events": [
+    {
+      "message": "case start",
+      "t": 1794988235.444
+    }
+  ],
+  "fault_evidence": {
+    "counted": [
+      {
+        "frame_crc_ok": false,
+        "frame_kind": "",
+        "frame_seq": -1,
+        "frame_valid": false,
+        "kind": "fsync",
+        "len": -1,
+        "nth": 1,
+        "off": -1,
+        "path": "/workspace/verification/results/run-final/work/checkpoint-kill-after-dir-fsync/source/.lamina-image-3015318240",
+        "path2": null,
+        "phase": "entry",
+        "result": null,
+        "size_after": null
+      },
+      {
+        "frame_crc_ok": false,
+        "frame_kind": "",
+        "frame_seq": -1,
+        "frame_valid": false,
+        "kind": "fsync",
+        "len": -1,
+        "nth": 1,
+        "off": -1,
+        "path": "/workspace/verification/results/run-final/work/checkpoint-kill-after-dir-fsync/source/.lamina-image-3015318240",
+        "path2": null,
+        "phase": "exit",
+        "result": 0,
+        "size_after": 1069
+      },
+      {
+        "frame_crc_ok": false,
+        "frame_kind": "",
+        "frame_seq": -1,
+        "frame_valid": false,
+        "kind": "fsync",
+        "len": -1,
+        "nth": 2,
+        "off": -1,
+        "path": "/workspace/verification/results/run-final/work/checkpoint-kill-after-dir-fsync/source",
+        "path2": null,
+        "phase": "entry",
+        "result": null,
+        "size_after": null
+      },
+      {
+        "frame_crc_ok": false,
+        "frame_kind": "",
+        "frame_seq": -1,
+        "frame_valid": false,
+        "kind": "fsync",
+        "len": -1,
+        "nth": 2,
+        "off": -1,
+        "path": "/workspace/verification/results/run-final/work/checkpoint-kill-after-dir-fsync/source",
+        "path2": null,
+        "phase": "exit",
+        "result": 0,
+        "size_after": 160
+      }
+    ],
+    "fault": {
+      "at": "kill-after",
+      "event": "fault",
+      "kind": "fsync",
+      "nth": 2,
+      "path": "/workspace/verification/results/run-final/work/checkpoint-kill-after-dir-fsync/source",
+      "path2": null,
+      "t_ns": 92194831558449,
+      "ts_ms": 42.22
+    },
+    "mutations": [],
+    "snapshots": [
+      {
+        "event": "snapshot_dir",
+        "path": "/workspace/verification/results/run-final/work/checkpoint-kill-after-dir-fsync/source",
+        "tag": "atfault"
+      },
+      {
+        "bytes": 1069,
+        "copy": "/workspace/verification/results/run-final/cases/checkpoint-kill-after-dir-fsync/artifacts/fault-snapshot/checkpoint.lmi.atfault",
+        "event": "snapshot_file",
+        "path": "/workspace/verification/results/run-final/work/checkpoint-kill-after-dir-fsync/source/checkpoint.lmi",
+        "tag": "atfault"
+      },
+      {
+        "bytes": 1340,
+        "copy": "/workspace/verification/results/run-final/cases/checkpoint-kill-after-dir-fsync/artifacts/fault-snapshot/journal.lmw.atfault",
+        "event": "snapshot_file",
+        "path": "/workspace/verification/results/run-final/work/checkpoint-kill-after-dir-fsync/source/journal.lmw",
+        "tag": "atfault"
+      },
+      {
+        "bytes": 0,
+        "copy": "/workspace/verification/results/run-final/cases/checkpoint-kill-after-dir-fsync/artifacts/fault-snapshot/lamina.lock.atfault",
+        "event": "snapshot_file",
+        "path": "/workspace/verification/results/run-final/work/checkpoint-kill-after-dir-fsync/source/lamina.lock",
+        "tag": "atfault"
+      }
+    ],
+    "target_exit": [
+      {
+        "code": 0,
+        "event": "target_exit",
+        "exited": false,
+        "signal": 9,
+        "ts_ms": 73.109
+      }
+    ]
+  },
+  "fault_fired": true,
+  "group": "checkpoint",
+  "observation": {
+    "catalog": {
+      "indexes": [],
+      "relations": [
+        {
+          "columns": [
+            {
+              "name": "sample",
+              "nullable": false,
+              "type": "int"
+            },
+            {
+              "name": "band",
+              "nullable": false,
+              "type": "text"
+            },
+            {
+              "name": "amplitude",
+              "nullable": true,
+              "type": "int"
+            },
+            {
+              "name": "valid",
+              "nullable": false,
+              "type": "bool"
+            }
+          ],
+          "created": 1,
+          "name": "spectra",
+          "primary": "sample"
+        }
+      ]
+    },
+    "catalog_status": 200,
+    "durable_floor": {
+      "row_keys": [
+        "int:1",
+        "int:10",
+        "int:11",
+        "int:2",
+        "int:3",
+        "int:4",
+        "int:5"
+      ],
+      "sequence": 4
+    },
+    "durable_floor_read": {
+      "rows": [
+        {
+          "amplitude": 10,
+          "band": "b1",
+          "sample": 1,
+          "valid": true
+        },
+        {
+          "amplitude": 100,
+          "band": "b10",
+          "sample": 10,
+          "valid": true
+        },
+        {
+          "amplitude": 110,
+          "band": "b11",
+          "sample": 11,
+          "valid": true
+        },
+        {
+          "amplitude": 20,
+          "band": "b2",
+          "sample": 2,
+          "valid": true
+        },
+        {
+          "amplitude": 30,
+          "band": "b3",
+          "sample": 3,
+          "valid": true
+        },
+        {
+          "amplitude": 40,
+          "band": "b4",
+          "sample": 4,
+          "valid": true
+        },
+        {
+          "amplitude": 50,
+          "band": "b5",
+          "sample": 5,
+          "valid": true
+        }
+      ],
+      "status": 200
+    },
+    "exit_code": null,
+    "history": {
+      "2": {
+        "rows": [
+          {
+            "amplitude": 10,
+            "band": "b1",
+            "sample": 1,
+            "valid": true
+          },
+          {
+            "amplitude": 20,
+            "band": "b2",
+            "sample": 2,
+            "valid": true
+          },
+          {
+            "amplitude": 30,
+            "band": "b3",
+            "sample": 3,
+            "valid": true
+          }
+        ],
+        "status": 200
+      },
+      "3": {
+        "rows": [
+          {
+            "amplitude": 10,
+            "band": "b1",
+            "sample": 1,
+            "valid": true
+          },
+          {
+            "amplitude": 20,
+            "band": "b2",
+            "sample": 2,
+            "valid": true
+          },
+          {
+            "amplitude": 30,
+            "band": "b3",
+            "sample": 3,
+            "valid": true
+          },
+          {
+            "amplitude": 40,
+            "band": "b4",
+            "sample": 4,
+            "valid": true
+          },
+          {
+            "amplitude": 50,
+            "band": "b5",
+            "sample": 5,
+            "valid": true
+          }
+        ],
+        "status": 200
+      },
+      "4": {
+        "rows": [
+          {
+            "amplitude": 10,
+            "band": "b1",
+            "sample": 1,
+            "valid": true
+          },
+          {
+            "amplitude": 100,
+            "band": "b10",
+            "sample": 10,
+            "valid": true
+          },
+          {
+            "amplitude": 110,
+            "band": "b11",
+            "sample": 11,
+            "valid": true
+          },
+          {
+            "amplitude": 20,
+            "band": "b2",
+            "sample": 2,
+            "valid": true
+          },
+          {
+            "amplitude": 30,
+            "band": "b3",
+            "sample": 3,
+            "valid": true
+          },
+          {
+            "amplitude": 40,
+            "band": "b4",
+            "sample": 4,
+            "valid": true
+          },
+          {
+            "amplitude": 50,
+            "band": "b5",
+            "sample": 5,
+            "valid": true
+          }
+        ],
+        "status": 200
+      }
+    },
+    "log_tail": "",
+    "oracle": {
+      "checkpoint_valid": true,
+      "durable_sequences": [
+        2,
+        3,
+        4
+      ],
+      "head": 4,
+      "image_sequence": 4,
+      "journal_sequence_end": 4,
+      "outcome": "start",
+      "reason": "clean recovery",
+      "relations": [
+        "spectra"
+      ],
+      "rows": {
+        "spectra": [
+          "int:1",
+          "int:10",
+          "int:11",
+          "int:2",
+          "int:3",
+          "int:4",
+          "int:5"
+        ]
+      },
+      "tail_bytes": 0
+    },
+    "rows": {
+      "spectra": {
+        "rows": [
+          {
+            "amplitude": 10,
+            "band": "b1",
+            "sample": 1,
+            "valid": true
+          },
+          {
+            "amplitude": 100,
+            "band": "b10",
+            "sample": 10,
+            "valid": true
+          },
+          {
+            "amplitude": 110,
+            "band": "b11",
+            "sample": 11,
+            "valid": true
+          },
+          {
+            "amplitude": 20,
+            "band": "b2",
+            "sample": 2,
+            "valid": true
+          },
+          {
+            "amplitude": 30,
+            "band": "b3",
+            "sample": 3,
+            "valid": true
+          },
+          {
+            "amplitude": 40,
+            "band": "b4",
+            "sample": 4,
+            "valid": true
+          },
+          {
+            "amplitude": 50,
+            "band": "b5",
+            "sample": 5,
+            "valid": true
+          }
+        ],
+        "status": 200
+      }
+    },
+    "started": true,
+    "stats": {
+      "active": [],
+      "commits_since_open": 0,
+      "conflicts_since_open": 0,
+      "history_base": 0,
+      "horizon": 0,
+      "index_entries": {},
+      "journal_records": 4,
+      "keys": 7,
+      "queries_since_open": 0,
+      "recovered_tail_bytes": 0,
+      "sequence": 4,
+      "versions": 7
+    }
+  },
+  "observations": {
+    "checkpoint_confirmed": false,
+    "checkpoint_head": 4,
+    "checkpoint_http_body": {
+      "detail": "Remote end closed connection without response",
+      "transport": "RemoteDisconnected"
+    },
+    "checkpoint_http_body_1": {
+      "detail": "Remote end closed connection without response",
+      "transport": "RemoteDisconnected"
+    },
+    "checkpoint_http_status": null,
+    "checkpoint_http_status_1": null,
+    "checkpoint_image_valid_after_fault": true,
+    "checkpoint_installed_sequence": 4,
+    "checkpoint_responses": [
+      {
+        "body": {
+          "detail": "Remote end closed connection without response",
+          "transport": "RemoteDisconnected"
+        },
+        "status": null
+      }
+    ],
+    "classification": "recovered",
+    "classification_detail": "clean recovery",
+    "post_fault_checkpoint": {
+      "horizon": 0,
+      "present": true,
+      "sequence": 4,
+      "sha256": "4d0a1d4282c959948869d2b666990a001e99320653a261a8aa4f3c84f0338542",
+      "valid": true
+    },
+    "post_fault_files": {
+      "checkpoint.lmi": {
+        "sha256": "4d0a1d4282c959948869d2b666990a001e99320653a261a8aa4f3c84f0338542",
+        "size": 1069
+      },
+      "journal.lmw": {
+        "sha256": "8334001ddaa739d7699ddb0ecb97c5b63fae41d3dee5bb5e3e6a243f0335fb4b",
+        "size": 1340
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "post_recovery_checkpoint": {
+      "horizon": 0,
+      "present": true,
+      "sequence": 4,
+      "sha256": "4d0a1d4282c959948869d2b666990a001e99320653a261a8aa4f3c84f0338542",
+      "valid": true
+    },
+    "post_recovery_files": {
+      "checkpoint.lmi": {
+        "sha256": "4d0a1d4282c959948869d2b666990a001e99320653a261a8aa4f3c84f0338542",
+        "size": 1069
+      },
+      "journal.lmw": {
+        "sha256": "8334001ddaa739d7699ddb0ecb97c5b63fae41d3dee5bb5e3e6a243f0335fb4b",
+        "size": 1340
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "pre_fault_files": {
+      "checkpoint.lmi": {
+        "sha256": "67e9a3a74b1001135e225ceca05b7658817832a455f886a4e4ac9c4f38e245c0",
+        "size": 725
+      },
+      "journal.lmw": {
+        "sha256": "8334001ddaa739d7699ddb0ecb97c5b63fae41d3dee5bb5e3e6a243f0335fb4b",
+        "size": 1340
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "replay_sequence_used": 4,
+    "rows_equal_journal_replay": true,
+    "setup_head": 3
+  },
+  "path_under_test": "checkpoint-replacement",
+  "stop": "kill-after:2:fsync",
+  "tracer_exit": 0,
+  "trigger_result": [
+    {
+      "body": {
+        "detail": "Remote end closed connection without response",
+        "transport": "RemoteDisconnected"
+      },
+      "status": null
+    }
+  ]
+}

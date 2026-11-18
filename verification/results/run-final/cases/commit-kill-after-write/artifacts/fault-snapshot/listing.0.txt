@@ -1,0 +1,7 @@
+/workspace/verification/results/run-final/work/commit-kill-after-write/source:
+total 8
+drwxrwxrwx 1 1000 1000  160 2026-11-18 07:49:30.390085772 +0000 .
+drwxrwxrwx 1 1000 1000   96 2026-11-18 07:49:30.359691858 +0000 ..
+-rw------- 1 1000 1000  725 2026-11-18 07:49:30.388419511 +0000 checkpoint.lmi
+-rw------- 1 1000 1000 1340 2026-11-18 07:49:30.397505322 +0000 journal.lmw
+-rw------- 1 1000 1000    0 2026-11-18 07:49:30.363662427 +0000 lamina.lock

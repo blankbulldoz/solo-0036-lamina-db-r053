@@ -1,0 +1,88 @@
+{
+  "artifacts": {},
+  "case": "corrupt-checkpoint-unknown-relation",
+  "corrupt_flip": false,
+  "description": "Valid digest, store references a relation absent from catalog.",
+  "deterministic_boundary": true,
+  "events": [
+    {
+      "message": "case start",
+      "t": 1794988240.911
+    }
+  ],
+  "group": "corruption",
+  "observation": {
+    "durable_floor": {
+      "row_keys": [],
+      "sequence": null
+    },
+    "exit_code": 1,
+    "log_tail": "2026/11/18 07:50:40 ERROR lamina stopped error=\"checkpoint: image references unknown relation\"\n",
+    "oracle": {
+      "checkpoint_valid": false,
+      "durable_sequences": [],
+      "head": null,
+      "image_sequence": null,
+      "journal_sequence_end": null,
+      "outcome": "refuse",
+      "reason": "checkpoint invalid: image references unknown relation",
+      "relations": [],
+      "rows": {},
+      "tail_bytes": 0
+    },
+    "started": false
+  },
+  "observations": {
+    "checkpoint_semantic_mutation": "store references unknown relation",
+    "classification": "refused_as_required",
+    "classification_detail": "corruption rejected at startup, as the format requires",
+    "oracle_outcome": "refuse",
+    "oracle_reason": "checkpoint invalid: image references unknown relation",
+    "post_fault_files": {
+      "checkpoint.lmi": {
+        "sha256": "ada34a8d86507bbb73268e0894935dddaafa2497a3d8ca387db63c2a3f218ae9",
+        "size": 736
+      },
+      "journal.lmw": {
+        "sha256": "bcb683e85396a0263980dc39aa763674981ed8c0dd3f5625a9ae8fedf930c710",
+        "size": 1031
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "post_recovery_files": {
+      "checkpoint.lmi": {
+        "sha256": "ada34a8d86507bbb73268e0894935dddaafa2497a3d8ca387db63c2a3f218ae9",
+        "size": 736
+      },
+      "journal.lmw": {
+        "sha256": "bcb683e85396a0263980dc39aa763674981ed8c0dd3f5625a9ae8fedf930c710",
+        "size": 1031
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "pre_fault_files": {
+      "checkpoint.lmi": {
+        "sha256": "67e9a3a74b1001135e225ceca05b7658817832a455f886a4e4ac9c4f38e245c0",
+        "size": 725
+      },
+      "journal.lmw": {
+        "sha256": "bcb683e85396a0263980dc39aa763674981ed8c0dd3f5625a9ae8fedf930c710",
+        "size": 1031
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "server_started": false,
+    "setup_head": 3
+  },
+  "path_under_test": "corruption-rejection",
+  "stop": null
+}

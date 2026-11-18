@@ -1,0 +1,301 @@
+{
+  "artifacts": {},
+  "case": "corrupt-journal-tail-garbage",
+  "corrupt_flip": false,
+  "description": "3-byte incomplete tail: documented as truncatable, must start and expose the intact prefix.",
+  "deterministic_boundary": true,
+  "events": [
+    {
+      "message": "case start",
+      "t": 1794988241.493
+    }
+  ],
+  "group": "corruption",
+  "observation": {
+    "catalog": {
+      "indexes": [],
+      "relations": [
+        {
+          "columns": [
+            {
+              "name": "sample",
+              "nullable": false,
+              "type": "int"
+            },
+            {
+              "name": "band",
+              "nullable": false,
+              "type": "text"
+            },
+            {
+              "name": "amplitude",
+              "nullable": true,
+              "type": "int"
+            },
+            {
+              "name": "valid",
+              "nullable": false,
+              "type": "bool"
+            }
+          ],
+          "created": 1,
+          "name": "spectra",
+          "primary": "sample"
+        }
+      ]
+    },
+    "catalog_status": 200,
+    "durable_floor": {
+      "row_keys": [
+        "int:1",
+        "int:2",
+        "int:3",
+        "int:4",
+        "int:5"
+      ],
+      "sequence": 3
+    },
+    "durable_floor_read": {
+      "rows": [
+        {
+          "amplitude": 10,
+          "band": "b1",
+          "sample": 1,
+          "valid": true
+        },
+        {
+          "amplitude": 20,
+          "band": "b2",
+          "sample": 2,
+          "valid": true
+        },
+        {
+          "amplitude": 30,
+          "band": "b3",
+          "sample": 3,
+          "valid": true
+        },
+        {
+          "amplitude": 40,
+          "band": "b4",
+          "sample": 4,
+          "valid": true
+        },
+        {
+          "amplitude": 50,
+          "band": "b5",
+          "sample": 5,
+          "valid": true
+        }
+      ],
+      "status": 200
+    },
+    "exit_code": null,
+    "history": {
+      "2": {
+        "rows": [
+          {
+            "amplitude": 10,
+            "band": "b1",
+            "sample": 1,
+            "valid": true
+          },
+          {
+            "amplitude": 20,
+            "band": "b2",
+            "sample": 2,
+            "valid": true
+          },
+          {
+            "amplitude": 30,
+            "band": "b3",
+            "sample": 3,
+            "valid": true
+          }
+        ],
+        "status": 200
+      },
+      "3": {
+        "rows": [
+          {
+            "amplitude": 10,
+            "band": "b1",
+            "sample": 1,
+            "valid": true
+          },
+          {
+            "amplitude": 20,
+            "band": "b2",
+            "sample": 2,
+            "valid": true
+          },
+          {
+            "amplitude": 30,
+            "band": "b3",
+            "sample": 3,
+            "valid": true
+          },
+          {
+            "amplitude": 40,
+            "band": "b4",
+            "sample": 4,
+            "valid": true
+          },
+          {
+            "amplitude": 50,
+            "band": "b5",
+            "sample": 5,
+            "valid": true
+          }
+        ],
+        "status": 200
+      }
+    },
+    "log_tail": "",
+    "oracle": {
+      "checkpoint_valid": true,
+      "durable_sequences": [
+        2,
+        3
+      ],
+      "head": 3,
+      "image_sequence": 2,
+      "journal_sequence_end": 3,
+      "outcome": "start",
+      "reason": "journal tail of 3 bytes will be truncated",
+      "relations": [
+        "spectra"
+      ],
+      "rows": {
+        "spectra": [
+          "int:1",
+          "int:2",
+          "int:3",
+          "int:4",
+          "int:5"
+        ]
+      },
+      "tail_bytes": 3
+    },
+    "rows": {
+      "spectra": {
+        "rows": [
+          {
+            "amplitude": 10,
+            "band": "b1",
+            "sample": 1,
+            "valid": true
+          },
+          {
+            "amplitude": 20,
+            "band": "b2",
+            "sample": 2,
+            "valid": true
+          },
+          {
+            "amplitude": 30,
+            "band": "b3",
+            "sample": 3,
+            "valid": true
+          },
+          {
+            "amplitude": 40,
+            "band": "b4",
+            "sample": 4,
+            "valid": true
+          },
+          {
+            "amplitude": 50,
+            "band": "b5",
+            "sample": 5,
+            "valid": true
+          }
+        ],
+        "status": 200
+      }
+    },
+    "started": true,
+    "stats": {
+      "active": [],
+      "commits_since_open": 0,
+      "conflicts_since_open": 0,
+      "history_base": 0,
+      "horizon": 0,
+      "index_entries": {},
+      "journal_records": 3,
+      "keys": 5,
+      "queries_since_open": 0,
+      "recovered_tail_bytes": 3,
+      "sequence": 3,
+      "versions": 5
+    }
+  },
+  "observations": {
+    "appended_tail_bytes": 3,
+    "classification": "accepted_cleanly",
+    "classification_detail": "journal tail of 3 bytes will be truncated",
+    "oracle_outcome": "start",
+    "oracle_reason": "journal tail of 3 bytes will be truncated",
+    "oracle_row_keys": [
+      "int:1",
+      "int:2",
+      "int:3",
+      "int:4",
+      "int:5"
+    ],
+    "post_fault_files": {
+      "checkpoint.lmi": {
+        "sha256": "67e9a3a74b1001135e225ceca05b7658817832a455f886a4e4ac9c4f38e245c0",
+        "size": 725
+      },
+      "journal.lmw": {
+        "sha256": "0b18a0542d9842488a4c6b1212cb04804576524ed1f38f9c86d17e6adb53cc1b",
+        "size": 1034
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "post_recovery_files": {
+      "checkpoint.lmi": {
+        "sha256": "67e9a3a74b1001135e225ceca05b7658817832a455f886a4e4ac9c4f38e245c0",
+        "size": 725
+      },
+      "journal.lmw": {
+        "sha256": "7556dfb081874dbf54dc4df4908022bff3e53bd293da7bf7c1f07b153368725b",
+        "size": 1031
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "pre_fault_files": {
+      "checkpoint.lmi": {
+        "sha256": "67e9a3a74b1001135e225ceca05b7658817832a455f886a4e4ac9c4f38e245c0",
+        "size": 725
+      },
+      "journal.lmw": {
+        "sha256": "7556dfb081874dbf54dc4df4908022bff3e53bd293da7bf7c1f07b153368725b",
+        "size": 1031
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "reported_recovered_tail_bytes": 3,
+    "server_started": true,
+    "setup_head": 3,
+    "visible_row_keys": [
+      "int:1",
+      "int:2",
+      "int:3",
+      "int:4",
+      "int:5"
+    ]
+  },
+  "path_under_test": "corruption-rejection",
+  "stop": null
+}

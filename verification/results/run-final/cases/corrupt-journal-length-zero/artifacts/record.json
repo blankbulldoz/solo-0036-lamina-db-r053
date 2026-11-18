@@ -1,0 +1,88 @@
+{
+  "artifacts": {},
+  "case": "corrupt-journal-length-zero",
+  "corrupt_flip": false,
+  "description": "Frame length field set to 0 (illegal framing).",
+  "deterministic_boundary": true,
+  "events": [
+    {
+      "message": "case start",
+      "t": 1794988239.619
+    }
+  ],
+  "group": "corruption",
+  "observation": {
+    "durable_floor": {
+      "row_keys": [],
+      "sequence": null
+    },
+    "exit_code": 1,
+    "log_tail": "2026/11/18 07:50:39 ERROR lamina stopped error=\"invalid journal length at 730\"\n",
+    "oracle": {
+      "checkpoint_valid": null,
+      "durable_sequences": [],
+      "head": null,
+      "image_sequence": null,
+      "journal_sequence_end": null,
+      "outcome": "refuse",
+      "reason": "journal invalid: invalid frame length 0 at offset 730",
+      "relations": [],
+      "rows": {},
+      "tail_bytes": 0
+    },
+    "started": false
+  },
+  "observations": {
+    "classification": "refused_as_required",
+    "classification_detail": "corruption rejected at startup, as the format requires",
+    "mutated_offset": 730,
+    "oracle_outcome": "refuse",
+    "oracle_reason": "journal invalid: invalid frame length 0 at offset 730",
+    "post_fault_files": {
+      "checkpoint.lmi": {
+        "sha256": "67e9a3a74b1001135e225ceca05b7658817832a455f886a4e4ac9c4f38e245c0",
+        "size": 725
+      },
+      "journal.lmw": {
+        "sha256": "00884dea60c40459e35be0fa3680ed8204a216b18b6579a29e31d41da7fae6d1",
+        "size": 1031
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "post_recovery_files": {
+      "checkpoint.lmi": {
+        "sha256": "67e9a3a74b1001135e225ceca05b7658817832a455f886a4e4ac9c4f38e245c0",
+        "size": 725
+      },
+      "journal.lmw": {
+        "sha256": "00884dea60c40459e35be0fa3680ed8204a216b18b6579a29e31d41da7fae6d1",
+        "size": 1031
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "pre_fault_files": {
+      "checkpoint.lmi": {
+        "sha256": "67e9a3a74b1001135e225ceca05b7658817832a455f886a4e4ac9c4f38e245c0",
+        "size": 725
+      },
+      "journal.lmw": {
+        "sha256": "aad063f1cc28c0b4553c23ea4dd7cce9a664f2d6126f209188f114f9ba0d72c2",
+        "size": 1031
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "server_started": false,
+    "setup_head": 3
+  },
+  "path_under_test": "corruption-rejection",
+  "stop": null
+}

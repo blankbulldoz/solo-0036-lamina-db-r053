@@ -1,0 +1,7 @@
+/workspace/verification/results/run-final/work/restore-corrupt-before-install/restored:
+total 8
+drwx------ 1 1000 1000 160 2026-11-18 07:50:38.947605760 +0000 .
+drwxrwxrwx 1 1000 1000 128 2026-11-18 07:50:38.943319856 +0000 ..
+-rw------- 1 1000 1000 817 2026-11-18 07:50:38.949848484 +0000 checkpoint.lmi
+-rw------- 1 1000 1000  16 2026-11-18 07:50:38.943664567 +0000 journal.lmw
+-rw------- 1 1000 1000   0 2026-11-18 07:50:38.943431232 +0000 lamina.lock

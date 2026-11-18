@@ -1,0 +1,14 @@
+{
+  "checkpoint.lmi": {
+    "sha256": "c837869e2ba8fb20e0ccb805b176bf90e4f41f58249ee29529b6a7564c17e833",
+    "size": 725
+  },
+  "journal.lmw": {
+    "sha256": "55e4bd97d5f0add9c089efc26e16713a0b5fb541483054fb49486b8bc73b50cd",
+    "size": 1031
+  },
+  "lamina.lock": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "size": 0
+  }
+}

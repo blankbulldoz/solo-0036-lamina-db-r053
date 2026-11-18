@@ -1,0 +1,88 @@
+{
+  "artifacts": {},
+  "case": "corrupt-checkpoint-unique-violation",
+  "corrupt_flip": false,
+  "description": "Valid digest, current rows violate a unique index.",
+  "deterministic_boundary": true,
+  "events": [
+    {
+      "message": "case start",
+      "t": 1794988241.285
+    }
+  ],
+  "group": "corruption",
+  "observation": {
+    "durable_floor": {
+      "row_keys": [],
+      "sequence": null
+    },
+    "exit_code": 1,
+    "log_tail": "2026/11/18 07:50:41 ERROR lamina stopped error=\"checkpoint: image violates unique index uniq\"\n",
+    "oracle": {
+      "checkpoint_valid": false,
+      "durable_sequences": [],
+      "head": null,
+      "image_sequence": null,
+      "journal_sequence_end": null,
+      "outcome": "refuse",
+      "reason": "checkpoint invalid: image violates unique index",
+      "relations": [],
+      "rows": {},
+      "tail_bytes": 0
+    },
+    "started": false
+  },
+  "observations": {
+    "checkpoint_semantic_mutation": "two current rows share a unique value",
+    "classification": "refused_as_required",
+    "classification_detail": "corruption rejected at startup, as the format requires",
+    "oracle_outcome": "refuse",
+    "oracle_reason": "checkpoint invalid: image violates unique index",
+    "post_fault_files": {
+      "checkpoint.lmi": {
+        "sha256": "7211dc28191f5f4225ed6641cd79a686fb16e87211ee46e271de1bfca75f872a",
+        "size": 810
+      },
+      "journal.lmw": {
+        "sha256": "5ff6c5cdfb98facb06b7cfb772ca5649b5af8bb01c152938726bc7255073d0be",
+        "size": 1031
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "post_recovery_files": {
+      "checkpoint.lmi": {
+        "sha256": "7211dc28191f5f4225ed6641cd79a686fb16e87211ee46e271de1bfca75f872a",
+        "size": 810
+      },
+      "journal.lmw": {
+        "sha256": "5ff6c5cdfb98facb06b7cfb772ca5649b5af8bb01c152938726bc7255073d0be",
+        "size": 1031
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "pre_fault_files": {
+      "checkpoint.lmi": {
+        "sha256": "67e9a3a74b1001135e225ceca05b7658817832a455f886a4e4ac9c4f38e245c0",
+        "size": 725
+      },
+      "journal.lmw": {
+        "sha256": "5ff6c5cdfb98facb06b7cfb772ca5649b5af8bb01c152938726bc7255073d0be",
+        "size": 1031
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "server_started": false,
+    "setup_head": 3
+  },
+  "path_under_test": "corruption-rejection",
+  "stop": null
+}

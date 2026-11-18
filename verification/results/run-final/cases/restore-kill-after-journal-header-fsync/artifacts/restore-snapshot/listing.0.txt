@@ -1,0 +1,6 @@
+/workspace/verification/results/run-final/work/restore-kill-after-journal-header-fsync/restored:
+total 4
+drwx------ 1 1000 1000 128 2026-11-18 07:50:37.415724671 +0000 .
+drwxrwxrwx 1 1000 1000 128 2026-11-18 07:50:37.415482003 +0000 ..
+-rw------- 1 1000 1000  16 2026-11-18 07:50:37.415852172 +0000 journal.lmw
+-rw------- 1 1000 1000   0 2026-11-18 07:50:37.415597379 +0000 lamina.lock

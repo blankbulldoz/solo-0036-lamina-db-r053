@@ -1,0 +1,183 @@
+{
+  "artifacts": {
+    "restore.log.tail": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "source-backup.lmi": {
+      "bytes": 817,
+      "sha256": "e0976334eb57af1b60c9efb55d1961801ec7e97f85c78a7517f52c83f6a53852"
+    }
+  },
+  "case": "restore-corrupt-before-install",
+  "corrupt_flip": true,
+  "description": "Byte-flip in the installed image at rename time: restore must not leave a directory that silently serves damaged data.",
+  "deterministic_boundary": true,
+  "events": [
+    {
+      "message": "case start",
+      "t": 1794988238.906
+    }
+  ],
+  "fault_evidence": {
+    "counted": [
+      {
+        "frame_crc_ok": false,
+        "frame_kind": "",
+        "frame_seq": -1,
+        "frame_valid": false,
+        "kind": "rename",
+        "len": -1,
+        "nth": 1,
+        "off": -1,
+        "path": "/workspace/verification/results/run-final/work/restore-corrupt-before-install/restored/checkpoint.lmi",
+        "path2": "/workspace/verification/results/run-final/work/restore-corrupt-before-install/restored/.lamina-image-2497846308",
+        "phase": "entry",
+        "result": null,
+        "size_after": null
+      },
+      {
+        "frame_crc_ok": false,
+        "frame_kind": "",
+        "frame_seq": -1,
+        "frame_valid": false,
+        "kind": "rename",
+        "len": -1,
+        "nth": 1,
+        "off": -1,
+        "path": "/workspace/verification/results/run-final/work/restore-corrupt-before-install/restored/checkpoint.lmi",
+        "path2": "/workspace/verification/results/run-final/work/restore-corrupt-before-install/restored/.lamina-image-2497846308",
+        "phase": "exit",
+        "result": 0,
+        "size_after": 817
+      }
+    ],
+    "fault": {
+      "at": "kill-after",
+      "event": "fault",
+      "kind": "rename",
+      "nth": 1,
+      "path": "/workspace/verification/results/run-final/work/restore-corrupt-before-install/restored/checkpoint.lmi",
+      "path2": "/workspace/verification/results/run-final/work/restore-corrupt-before-install/restored/.lamina-image-2497846308",
+      "t_ns": 92198292864026,
+      "ts_ms": 7.613
+    },
+    "mutations": [
+      {
+        "event": "flip_applied",
+        "from": 125,
+        "offset": 408,
+        "path": "/workspace/verification/results/run-final/work/restore-corrupt-before-install/restored/checkpoint.lmi",
+        "to": 130,
+        "written": 1
+      }
+    ],
+    "snapshots": [
+      {
+        "event": "snapshot_dir",
+        "path": "/workspace/verification/results/run-final/work/restore-corrupt-before-install/restored",
+        "tag": "atfault"
+      },
+      {
+        "bytes": 817,
+        "copy": "/workspace/verification/results/run-final/cases/restore-corrupt-before-install/artifacts/restore-snapshot/checkpoint.lmi.atfault",
+        "event": "snapshot_file",
+        "path": "/workspace/verification/results/run-final/work/restore-corrupt-before-install/restored/checkpoint.lmi",
+        "tag": "atfault"
+      },
+      {
+        "bytes": 16,
+        "copy": "/workspace/verification/results/run-final/cases/restore-corrupt-before-install/artifacts/restore-snapshot/journal.lmw.atfault",
+        "event": "snapshot_file",
+        "path": "/workspace/verification/results/run-final/work/restore-corrupt-before-install/restored/journal.lmw",
+        "tag": "atfault"
+      },
+      {
+        "bytes": 0,
+        "copy": "/workspace/verification/results/run-final/cases/restore-corrupt-before-install/artifacts/restore-snapshot/lamina.lock.atfault",
+        "event": "snapshot_file",
+        "path": "/workspace/verification/results/run-final/work/restore-corrupt-before-install/restored/lamina.lock",
+        "tag": "atfault"
+      }
+    ],
+    "target_exit": [
+      {
+        "code": 0,
+        "event": "target_exit",
+        "exited": false,
+        "signal": 9,
+        "ts_ms": 37.807
+      }
+    ]
+  },
+  "fault_fired": true,
+  "group": "restore",
+  "observation": {
+    "durable_floor": {
+      "row_keys": [],
+      "sequence": null
+    },
+    "exit_code": 1,
+    "log_tail": "2026/11/18 07:50:38 ERROR lamina stopped error=\"checkpoint: invalid character '\\\\x82' after object key:value pair\"\n",
+    "oracle": {
+      "checkpoint_valid": false,
+      "durable_sequences": [],
+      "head": null,
+      "image_sequence": null,
+      "journal_sequence_end": null,
+      "outcome": "refuse",
+      "reason": "checkpoint invalid: envelope json: 'utf-8' codec can't decode byte 0x82 in position 408: invalid start byte",
+      "relations": [],
+      "rows": {},
+      "tail_bytes": 0
+    },
+    "started": false
+  },
+  "observations": {
+    "artifact_restore.log.tail": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "artifact_source-backup.lmi": {
+      "bytes": 817,
+      "sha256": "e0976334eb57af1b60c9efb55d1961801ec7e97f85c78a7517f52c83f6a53852"
+    },
+    "backup_rows": [
+      "int:1",
+      "int:2",
+      "int:3"
+    ],
+    "classification": "restore_left_refusable_state",
+    "classification_detail": "checkpoint invalid: envelope json: 'utf-8' codec can't decode byte 0x82 in position 408: invalid start byte",
+    "restore_input_sha256": "e0976334eb57af1b60c9efb55d1961801ec7e97f85c78a7517f52c83f6a53852",
+    "restore_installed_files": {
+      "checkpoint.lmi": {
+        "sha256": "fe1969c61aa90d83c50d12a043f02cff9c466490c8856cc08088dfe7db1fc10f",
+        "size": 817
+      },
+      "journal.lmw": {
+        "sha256": "6c6aeb069809cb5a8af7248e59a379caf7c67db14b262c8c3871017693a2fc57",
+        "size": 16
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "restore_retry_same_dir_log": "2026/11/18 07:50:39 ERROR lamina stopped error=\"restore requires a new directory: mkdir /workspace/verification/results/run-final/work/restore-corrupt-before-install/restored: file exists\"\n",
+    "restore_retry_same_dir_started": false,
+    "restored_row_keys": [],
+    "source_backup_bytes": 817,
+    "source_backup_sequence": 3,
+    "source_backup_sha256": "e0976334eb57af1b60c9efb55d1961801ec7e97f85c78a7517f52c83f6a53852",
+    "source_row_keys": [
+      "int:1",
+      "int:2",
+      "int:3"
+    ]
+  },
+  "path_under_test": "restore-install",
+  "restore_dir_present": true,
+  "stop": "kill-after:1:rename",
+  "tracer_exit": 0
+}

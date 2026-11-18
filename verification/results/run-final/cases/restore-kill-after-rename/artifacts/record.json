@@ -1,0 +1,316 @@
+{
+  "artifacts": {
+    "restore.log.tail": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "source-backup.lmi": {
+      "bytes": 817,
+      "sha256": "e0976334eb57af1b60c9efb55d1961801ec7e97f85c78a7517f52c83f6a53852"
+    }
+  },
+  "case": "restore-kill-after-rename",
+  "corrupt_flip": false,
+  "description": "Kill after the restore rename: checkpoint installed, startup has not validated it.",
+  "deterministic_boundary": true,
+  "events": [
+    {
+      "message": "case start",
+      "t": 1794988238.494
+    }
+  ],
+  "fault_evidence": {
+    "counted": [
+      {
+        "frame_crc_ok": false,
+        "frame_kind": "",
+        "frame_seq": -1,
+        "frame_valid": false,
+        "kind": "rename",
+        "len": -1,
+        "nth": 1,
+        "off": -1,
+        "path": "/workspace/verification/results/run-final/work/restore-kill-after-rename/restored/checkpoint.lmi",
+        "path2": "/workspace/verification/results/run-final/work/restore-kill-after-rename/restored/.lamina-image-3556820616",
+        "phase": "entry",
+        "result": null,
+        "size_after": null
+      },
+      {
+        "frame_crc_ok": false,
+        "frame_kind": "",
+        "frame_seq": -1,
+        "frame_valid": false,
+        "kind": "rename",
+        "len": -1,
+        "nth": 1,
+        "off": -1,
+        "path": "/workspace/verification/results/run-final/work/restore-kill-after-rename/restored/checkpoint.lmi",
+        "path2": "/workspace/verification/results/run-final/work/restore-kill-after-rename/restored/.lamina-image-3556820616",
+        "phase": "exit",
+        "result": 0,
+        "size_after": 817
+      }
+    ],
+    "fault": {
+      "at": "kill-after",
+      "event": "fault",
+      "kind": "rename",
+      "nth": 1,
+      "path": "/workspace/verification/results/run-final/work/restore-kill-after-rename/restored/checkpoint.lmi",
+      "path2": "/workspace/verification/results/run-final/work/restore-kill-after-rename/restored/.lamina-image-3556820616",
+      "t_ns": 92197880523214,
+      "ts_ms": 7.934
+    },
+    "mutations": [],
+    "snapshots": [
+      {
+        "event": "snapshot_dir",
+        "path": "/workspace/verification/results/run-final/work/restore-kill-after-rename/restored",
+        "tag": "atfault"
+      },
+      {
+        "bytes": 817,
+        "copy": "/workspace/verification/results/run-final/cases/restore-kill-after-rename/artifacts/restore-snapshot/checkpoint.lmi.atfault",
+        "event": "snapshot_file",
+        "path": "/workspace/verification/results/run-final/work/restore-kill-after-rename/restored/checkpoint.lmi",
+        "tag": "atfault"
+      },
+      {
+        "bytes": 16,
+        "copy": "/workspace/verification/results/run-final/cases/restore-kill-after-rename/artifacts/restore-snapshot/journal.lmw.atfault",
+        "event": "snapshot_file",
+        "path": "/workspace/verification/results/run-final/work/restore-kill-after-rename/restored/journal.lmw",
+        "tag": "atfault"
+      },
+      {
+        "bytes": 0,
+        "copy": "/workspace/verification/results/run-final/cases/restore-kill-after-rename/artifacts/restore-snapshot/lamina.lock.atfault",
+        "event": "snapshot_file",
+        "path": "/workspace/verification/results/run-final/work/restore-kill-after-rename/restored/lamina.lock",
+        "tag": "atfault"
+      }
+    ],
+    "target_exit": [
+      {
+        "code": 0,
+        "event": "target_exit",
+        "exited": false,
+        "signal": 9,
+        "ts_ms": 40.978
+      }
+    ]
+  },
+  "fault_fired": true,
+  "group": "restore",
+  "observation": {
+    "catalog": {
+      "indexes": [
+        {
+          "column": "band",
+          "created": 3,
+          "name": "by_band",
+          "relation": "spectra",
+          "unique": false
+        }
+      ],
+      "relations": [
+        {
+          "columns": [
+            {
+              "name": "sample",
+              "nullable": false,
+              "type": "int"
+            },
+            {
+              "name": "band",
+              "nullable": false,
+              "type": "text"
+            },
+            {
+              "name": "amplitude",
+              "nullable": true,
+              "type": "int"
+            },
+            {
+              "name": "valid",
+              "nullable": false,
+              "type": "bool"
+            }
+          ],
+          "created": 1,
+          "name": "spectra",
+          "primary": "sample"
+        }
+      ]
+    },
+    "catalog_status": 200,
+    "durable_floor": {
+      "row_keys": [],
+      "sequence": 3
+    },
+    "durable_floor_read": {
+      "rows": [
+        {
+          "amplitude": 10,
+          "band": "b1",
+          "sample": 1,
+          "valid": true
+        },
+        {
+          "amplitude": 20,
+          "band": "b2",
+          "sample": 2,
+          "valid": true
+        },
+        {
+          "amplitude": 30,
+          "band": "b3",
+          "sample": 3,
+          "valid": true
+        }
+      ],
+      "status": 200
+    },
+    "exit_code": null,
+    "history": {
+      "3": {
+        "rows": [
+          {
+            "amplitude": 10,
+            "band": "b1",
+            "sample": 1,
+            "valid": true
+          },
+          {
+            "amplitude": 20,
+            "band": "b2",
+            "sample": 2,
+            "valid": true
+          },
+          {
+            "amplitude": 30,
+            "band": "b3",
+            "sample": 3,
+            "valid": true
+          }
+        ],
+        "status": 200
+      }
+    },
+    "log_tail": "",
+    "oracle": {
+      "checkpoint_valid": true,
+      "durable_sequences": [],
+      "head": 3,
+      "image_sequence": 3,
+      "journal_sequence_end": 3,
+      "outcome": "start",
+      "reason": "clean recovery",
+      "relations": [
+        "spectra"
+      ],
+      "rows": {
+        "spectra": [
+          "int:1",
+          "int:2",
+          "int:3"
+        ]
+      },
+      "tail_bytes": 0
+    },
+    "rows": {
+      "spectra": {
+        "rows": [
+          {
+            "amplitude": 10,
+            "band": "b1",
+            "sample": 1,
+            "valid": true
+          },
+          {
+            "amplitude": 20,
+            "band": "b2",
+            "sample": 2,
+            "valid": true
+          },
+          {
+            "amplitude": 30,
+            "band": "b3",
+            "sample": 3,
+            "valid": true
+          }
+        ],
+        "status": 200
+      }
+    },
+    "started": true,
+    "stats": {
+      "active": [],
+      "commits_since_open": 0,
+      "conflicts_since_open": 0,
+      "history_base": 3,
+      "horizon": 0,
+      "index_entries": {
+        "by_band": 3
+      },
+      "journal_records": 0,
+      "keys": 3,
+      "queries_since_open": 0,
+      "recovered_tail_bytes": 0,
+      "sequence": 3,
+      "versions": 3
+    }
+  },
+  "observations": {
+    "artifact_restore.log.tail": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "artifact_source-backup.lmi": {
+      "bytes": 817,
+      "sha256": "e0976334eb57af1b60c9efb55d1961801ec7e97f85c78a7517f52c83f6a53852"
+    },
+    "backup_rows": [
+      "int:1",
+      "int:2",
+      "int:3"
+    ],
+    "classification": "restore_complete",
+    "classification_detail": "installed image exposes exactly the source rows",
+    "restore_input_sha256": "e0976334eb57af1b60c9efb55d1961801ec7e97f85c78a7517f52c83f6a53852",
+    "restore_installed_files": {
+      "checkpoint.lmi": {
+        "sha256": "e0976334eb57af1b60c9efb55d1961801ec7e97f85c78a7517f52c83f6a53852",
+        "size": 817
+      },
+      "journal.lmw": {
+        "sha256": "6c6aeb069809cb5a8af7248e59a379caf7c67db14b262c8c3871017693a2fc57",
+        "size": 16
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "restore_retry_same_dir_log": "2026/11/18 07:50:38 ERROR lamina stopped error=\"restore requires a new directory: mkdir /workspace/verification/results/run-final/work/restore-kill-after-rename/restored: file exists\"\n",
+    "restore_retry_same_dir_started": false,
+    "restored_row_keys": [
+      "int:1",
+      "int:2",
+      "int:3"
+    ],
+    "source_backup_bytes": 817,
+    "source_backup_sequence": 3,
+    "source_backup_sha256": "e0976334eb57af1b60c9efb55d1961801ec7e97f85c78a7517f52c83f6a53852",
+    "source_row_keys": [
+      "int:1",
+      "int:2",
+      "int:3"
+    ]
+  },
+  "path_under_test": "restore-install",
+  "restore_dir_present": true,
+  "stop": "kill-after:1:rename",
+  "tracer_exit": 0
+}

@@ -1,0 +1,5 @@
+{"event":"launch","pid":62440,"stop_n":0,"stop_kind":"other","action":0,"watch_count":2,"skip_first":0,"corrupt_flip":false,"arm":null,"t0_ns":92198677077118,"tracer_start_ms":0.702}
+{"event":"watch","path":"/workspace/verification/results/run-final/work/restore-tampered-digest/restored"}
+{"event":"watch","path":"/workspace/verification/results/run-final/work/restore-tampered-digest/restored/*"}
+{"event":"target_exit","exited":true,"code":1,"signal":0,"ts_ms":3.615}
+{"event":"tracer_done","counted":0,"injected":false,"ts_ms":3.632}

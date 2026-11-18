@@ -1,0 +1,196 @@
+{
+  "artifacts": {},
+  "case": "commit-corrupt-after-write",
+  "corrupt_flip": true,
+  "description": "Flip a payload byte of the frame that write(2) just persisted, then SIGKILL. Must be refused at startup.",
+  "deterministic_boundary": true,
+  "events": [
+    {
+      "message": "case start",
+      "t": 1794988233.098
+    }
+  ],
+  "fault_evidence": {
+    "counted": [
+      {
+        "frame_crc_ok": true,
+        "frame_kind": "commit",
+        "frame_seq": 4,
+        "frame_valid": true,
+        "kind": "write",
+        "len": 309,
+        "nth": 1,
+        "off": 1031,
+        "path": "/workspace/verification/results/run-final/work/commit-corrupt-after-write/source/journal.lmw",
+        "path2": null,
+        "phase": "entry",
+        "result": null,
+        "size_after": null
+      },
+      {
+        "frame_crc_ok": true,
+        "frame_kind": "commit",
+        "frame_seq": 4,
+        "frame_valid": true,
+        "kind": "write",
+        "len": 309,
+        "nth": 1,
+        "off": 1031,
+        "path": "/workspace/verification/results/run-final/work/commit-corrupt-after-write/source/journal.lmw",
+        "path2": null,
+        "phase": "exit",
+        "result": 309,
+        "size_after": 1340
+      }
+    ],
+    "fault": {
+      "at": "kill-after",
+      "event": "fault",
+      "kind": "write",
+      "nth": 1,
+      "path": "/workspace/verification/results/run-final/work/commit-corrupt-after-write/source/journal.lmw",
+      "path2": null,
+      "t_ns": 92192482329960,
+      "ts_ms": 38.802
+    },
+    "mutations": [
+      {
+        "event": "flip_applied",
+        "from": 34,
+        "offset": 1193,
+        "path": "/workspace/verification/results/run-final/work/commit-corrupt-after-write/source/journal.lmw",
+        "to": 221,
+        "written": 1
+      }
+    ],
+    "snapshots": [
+      {
+        "event": "snapshot_dir",
+        "path": "/workspace/verification/results/run-final/work/commit-corrupt-after-write/source",
+        "tag": "atfault"
+      },
+      {
+        "bytes": 725,
+        "copy": "/workspace/verification/results/run-final/cases/commit-corrupt-after-write/artifacts/fault-snapshot/checkpoint.lmi.atfault",
+        "event": "snapshot_file",
+        "path": "/workspace/verification/results/run-final/work/commit-corrupt-after-write/source/checkpoint.lmi",
+        "tag": "atfault"
+      },
+      {
+        "bytes": 1340,
+        "copy": "/workspace/verification/results/run-final/cases/commit-corrupt-after-write/artifacts/fault-snapshot/journal.lmw.atfault",
+        "event": "snapshot_file",
+        "path": "/workspace/verification/results/run-final/work/commit-corrupt-after-write/source/journal.lmw",
+        "tag": "atfault"
+      },
+      {
+        "bytes": 0,
+        "copy": "/workspace/verification/results/run-final/cases/commit-corrupt-after-write/artifacts/fault-snapshot/lamina.lock.atfault",
+        "event": "snapshot_file",
+        "path": "/workspace/verification/results/run-final/work/commit-corrupt-after-write/source/lamina.lock",
+        "tag": "atfault"
+      }
+    ],
+    "target_exit": [
+      {
+        "code": 0,
+        "event": "target_exit",
+        "exited": false,
+        "signal": 9,
+        "ts_ms": 72.753
+      }
+    ]
+  },
+  "fault_fired": true,
+  "group": "commit",
+  "observation": {
+    "durable_floor": {
+      "row_keys": [],
+      "sequence": null
+    },
+    "exit_code": 1,
+    "log_tail": "2026/11/18 07:50:33 ERROR lamina stopped error=\"journal checksum mismatch at 1031\"\n",
+    "oracle": {
+      "checkpoint_valid": null,
+      "durable_sequences": [],
+      "head": null,
+      "image_sequence": null,
+      "journal_sequence_end": null,
+      "outcome": "refuse",
+      "reason": "journal invalid: crc mismatch at offset 1031 (frame 4)",
+      "relations": [],
+      "rows": {},
+      "tail_bytes": 0
+    },
+    "started": false
+  },
+  "observations": {
+    "ack_keys": [],
+    "acked_rows_present": null,
+    "classification": "must_refuse",
+    "classification_detail": "journal invalid: crc mismatch at offset 1031 (frame 4)",
+    "commit_confirmed": false,
+    "commit_http_body": {
+      "detail": "Remote end closed connection without response",
+      "transport": "RemoteDisconnected"
+    },
+    "commit_http_status": null,
+    "payload_keys": [
+      20,
+      21
+    ],
+    "post_fault_files": {
+      "checkpoint.lmi": {
+        "sha256": "67e9a3a74b1001135e225ceca05b7658817832a455f886a4e4ac9c4f38e245c0",
+        "size": 725
+      },
+      "journal.lmw": {
+        "sha256": "507b8165100faaa54da16e4a4d9ae371b9550e1544e1727a863acfc3a06e717f",
+        "size": 1340
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "post_recovery_files": {
+      "checkpoint.lmi": {
+        "sha256": "67e9a3a74b1001135e225ceca05b7658817832a455f886a4e4ac9c4f38e245c0",
+        "size": 725
+      },
+      "journal.lmw": {
+        "sha256": "507b8165100faaa54da16e4a4d9ae371b9550e1544e1727a863acfc3a06e717f",
+        "size": 1340
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "pre_fault_files": {
+      "checkpoint.lmi": {
+        "sha256": "67e9a3a74b1001135e225ceca05b7658817832a455f886a4e4ac9c4f38e245c0",
+        "size": 725
+      },
+      "journal.lmw": {
+        "sha256": "3236916f335277b0b8b72f010a40c3f1fe90fdbd922d6acc4681ee279726cfd3",
+        "size": 1031
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "setup_head": 3
+  },
+  "path_under_test": "commit-confirmation",
+  "stop": "kill-after:1:write",
+  "tracer_exit": 0,
+  "trigger_result": [
+    null,
+    {
+      "detail": "Remote end closed connection without response",
+      "transport": "RemoteDisconnected"
+    }
+  ]
+}

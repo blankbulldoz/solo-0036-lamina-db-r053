@@ -1,0 +1,7 @@
+/workspace/verification/results/run-final/work/commit-multi-frame-after-write/source:
+total 12
+drwxrwxrwx 1 1000 1000  160 2026-11-18 07:50:33.825299440 +0000 .
+drwxrwxrwx 1 1000 1000   96 2026-11-18 07:50:33.795454988 +0000 ..
+-rw------- 1 1000 1000  725 2026-11-18 07:50:33.823305384 +0000 checkpoint.lmi
+-rw------- 1 1000 1000 5140 2026-11-18 07:50:33.842132428 +0000 journal.lmw
+-rw------- 1 1000 1000    0 2026-11-18 07:50:33.799772601 +0000 lamina.lock

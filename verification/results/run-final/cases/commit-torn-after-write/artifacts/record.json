@@ -1,0 +1,395 @@
+{
+  "artifacts": {},
+  "case": "commit-torn-after-write",
+  "corrupt_flip": false,
+  "description": "Media failure shortens the frame that write(2) returned: the file ends mid-frame. Must be truncated as an incomplete tail, never half-applied.",
+  "deterministic_boundary": true,
+  "events": [
+    {
+      "message": "case start",
+      "t": 1794988233.439
+    }
+  ],
+  "fault_evidence": {
+    "counted": [
+      {
+        "frame_crc_ok": true,
+        "frame_kind": "commit",
+        "frame_seq": 4,
+        "frame_valid": true,
+        "kind": "write",
+        "len": 309,
+        "nth": 1,
+        "off": 1031,
+        "path": "/workspace/verification/results/run-final/work/commit-torn-after-write/source/journal.lmw",
+        "path2": null,
+        "phase": "entry",
+        "result": null,
+        "size_after": null
+      },
+      {
+        "frame_crc_ok": true,
+        "frame_kind": "commit",
+        "frame_seq": 4,
+        "frame_valid": true,
+        "kind": "write",
+        "len": 309,
+        "nth": 1,
+        "off": 1031,
+        "path": "/workspace/verification/results/run-final/work/commit-torn-after-write/source/journal.lmw",
+        "path2": null,
+        "phase": "exit",
+        "result": 309,
+        "size_after": 1340
+      }
+    ],
+    "fault": {
+      "at": "torn-after",
+      "event": "fault",
+      "kind": "write",
+      "nth": 1,
+      "path": "/workspace/verification/results/run-final/work/commit-torn-after-write/source/journal.lmw",
+      "path2": null,
+      "t_ns": 92192821919373,
+      "ts_ms": 37.971
+    },
+    "mutations": [
+      {
+        "event": "torn_applied",
+        "kept_bytes": 1193,
+        "offset": 1031,
+        "path": "/workspace/verification/results/run-final/work/commit-torn-after-write/source/journal.lmw",
+        "rc": 0
+      }
+    ],
+    "snapshots": [
+      {
+        "event": "snapshot_dir",
+        "path": "/workspace/verification/results/run-final/work/commit-torn-after-write/source",
+        "tag": "atfault"
+      },
+      {
+        "bytes": 725,
+        "copy": "/workspace/verification/results/run-final/cases/commit-torn-after-write/artifacts/fault-snapshot/checkpoint.lmi.atfault",
+        "event": "snapshot_file",
+        "path": "/workspace/verification/results/run-final/work/commit-torn-after-write/source/checkpoint.lmi",
+        "tag": "atfault"
+      },
+      {
+        "bytes": 1193,
+        "copy": "/workspace/verification/results/run-final/cases/commit-torn-after-write/artifacts/fault-snapshot/journal.lmw.atfault",
+        "event": "snapshot_file",
+        "path": "/workspace/verification/results/run-final/work/commit-torn-after-write/source/journal.lmw",
+        "tag": "atfault"
+      },
+      {
+        "bytes": 0,
+        "copy": "/workspace/verification/results/run-final/cases/commit-torn-after-write/artifacts/fault-snapshot/lamina.lock.atfault",
+        "event": "snapshot_file",
+        "path": "/workspace/verification/results/run-final/work/commit-torn-after-write/source/lamina.lock",
+        "tag": "atfault"
+      }
+    ],
+    "target_exit": [
+      {
+        "code": 0,
+        "event": "target_exit",
+        "exited": false,
+        "signal": 9,
+        "ts_ms": 70.786
+      }
+    ]
+  },
+  "fault_fired": true,
+  "group": "commit",
+  "observation": {
+    "catalog": {
+      "indexes": [],
+      "relations": [
+        {
+          "columns": [
+            {
+              "name": "sample",
+              "nullable": false,
+              "type": "int"
+            },
+            {
+              "name": "band",
+              "nullable": false,
+              "type": "text"
+            },
+            {
+              "name": "amplitude",
+              "nullable": true,
+              "type": "int"
+            },
+            {
+              "name": "valid",
+              "nullable": false,
+              "type": "bool"
+            }
+          ],
+          "created": 1,
+          "name": "spectra",
+          "primary": "sample"
+        }
+      ]
+    },
+    "catalog_status": 200,
+    "durable_floor": {
+      "row_keys": [
+        "int:1",
+        "int:2",
+        "int:3",
+        "int:4",
+        "int:5"
+      ],
+      "sequence": 3
+    },
+    "durable_floor_read": {
+      "rows": [
+        {
+          "amplitude": 10,
+          "band": "b1",
+          "sample": 1,
+          "valid": true
+        },
+        {
+          "amplitude": 20,
+          "band": "b2",
+          "sample": 2,
+          "valid": true
+        },
+        {
+          "amplitude": 30,
+          "band": "b3",
+          "sample": 3,
+          "valid": true
+        },
+        {
+          "amplitude": 40,
+          "band": "b4",
+          "sample": 4,
+          "valid": true
+        },
+        {
+          "amplitude": 50,
+          "band": "b5",
+          "sample": 5,
+          "valid": true
+        }
+      ],
+      "status": 200
+    },
+    "exit_code": null,
+    "history": {
+      "2": {
+        "rows": [
+          {
+            "amplitude": 10,
+            "band": "b1",
+            "sample": 1,
+            "valid": true
+          },
+          {
+            "amplitude": 20,
+            "band": "b2",
+            "sample": 2,
+            "valid": true
+          },
+          {
+            "amplitude": 30,
+            "band": "b3",
+            "sample": 3,
+            "valid": true
+          }
+        ],
+        "status": 200
+      },
+      "3": {
+        "rows": [
+          {
+            "amplitude": 10,
+            "band": "b1",
+            "sample": 1,
+            "valid": true
+          },
+          {
+            "amplitude": 20,
+            "band": "b2",
+            "sample": 2,
+            "valid": true
+          },
+          {
+            "amplitude": 30,
+            "band": "b3",
+            "sample": 3,
+            "valid": true
+          },
+          {
+            "amplitude": 40,
+            "band": "b4",
+            "sample": 4,
+            "valid": true
+          },
+          {
+            "amplitude": 50,
+            "band": "b5",
+            "sample": 5,
+            "valid": true
+          }
+        ],
+        "status": 200
+      }
+    },
+    "log_tail": "",
+    "oracle": {
+      "checkpoint_valid": true,
+      "durable_sequences": [
+        2,
+        3
+      ],
+      "head": 3,
+      "image_sequence": 2,
+      "journal_sequence_end": 3,
+      "outcome": "start",
+      "reason": "journal tail of 162 bytes will be truncated",
+      "relations": [
+        "spectra"
+      ],
+      "rows": {
+        "spectra": [
+          "int:1",
+          "int:2",
+          "int:3",
+          "int:4",
+          "int:5"
+        ]
+      },
+      "tail_bytes": 162
+    },
+    "rows": {
+      "spectra": {
+        "rows": [
+          {
+            "amplitude": 10,
+            "band": "b1",
+            "sample": 1,
+            "valid": true
+          },
+          {
+            "amplitude": 20,
+            "band": "b2",
+            "sample": 2,
+            "valid": true
+          },
+          {
+            "amplitude": 30,
+            "band": "b3",
+            "sample": 3,
+            "valid": true
+          },
+          {
+            "amplitude": 40,
+            "band": "b4",
+            "sample": 4,
+            "valid": true
+          },
+          {
+            "amplitude": 50,
+            "band": "b5",
+            "sample": 5,
+            "valid": true
+          }
+        ],
+        "status": 200
+      }
+    },
+    "started": true,
+    "stats": {
+      "active": [],
+      "commits_since_open": 0,
+      "conflicts_since_open": 0,
+      "history_base": 0,
+      "horizon": 0,
+      "index_entries": {},
+      "journal_records": 3,
+      "keys": 5,
+      "queries_since_open": 0,
+      "recovered_tail_bytes": 162,
+      "sequence": 3,
+      "versions": 5
+    }
+  },
+  "observations": {
+    "ack_keys": [],
+    "acked_rows_present": null,
+    "classification": "unconfirmed_absent",
+    "classification_detail": "no 200 and payload absent (permitted)",
+    "commit_confirmed": false,
+    "commit_http_body": {
+      "detail": "Remote end closed connection without response",
+      "transport": "RemoteDisconnected"
+    },
+    "commit_http_status": null,
+    "durable_floor_rows_present": true,
+    "durable_floor_sequence": 3,
+    "payload_keys": [
+      20,
+      21
+    ],
+    "post_fault_files": {
+      "checkpoint.lmi": {
+        "sha256": "67e9a3a74b1001135e225ceca05b7658817832a455f886a4e4ac9c4f38e245c0",
+        "size": 725
+      },
+      "journal.lmw": {
+        "sha256": "a76b63d7f034ef3187e8aae0679374c42e19e1769e847d8f74440f25212c3700",
+        "size": 1193
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "post_recovery_files": {
+      "checkpoint.lmi": {
+        "sha256": "67e9a3a74b1001135e225ceca05b7658817832a455f886a4e4ac9c4f38e245c0",
+        "size": 725
+      },
+      "journal.lmw": {
+        "sha256": "b1330a040c7256216a5cf9162752e3cb7e326cf475daa77da2326941f77b83e2",
+        "size": 1031
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "pre_fault_files": {
+      "checkpoint.lmi": {
+        "sha256": "67e9a3a74b1001135e225ceca05b7658817832a455f886a4e4ac9c4f38e245c0",
+        "size": 725
+      },
+      "journal.lmw": {
+        "sha256": "b1330a040c7256216a5cf9162752e3cb7e326cf475daa77da2326941f77b83e2",
+        "size": 1031
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "setup_head": 3
+  },
+  "path_under_test": "commit-confirmation",
+  "stop": "torn-after:1:write",
+  "tracer_exit": 0,
+  "trigger_result": [
+    null,
+    {
+      "detail": "Remote end closed connection without response",
+      "transport": "RemoteDisconnected"
+    }
+  ]
+}

@@ -1,0 +1,218 @@
+{
+  "artifacts": {},
+  "case": "checkpoint-corrupt-after-rename",
+  "corrupt_flip": true,
+  "description": "Byte-flip inside the freshly renamed checkpoint before the directory sync. Startup must refuse rather than fall back silently to the journal.",
+  "deterministic_boundary": true,
+  "events": [
+    {
+      "message": "case start",
+      "t": 1794988235.766
+    }
+  ],
+  "fault_evidence": {
+    "counted": [
+      {
+        "frame_crc_ok": false,
+        "frame_kind": "",
+        "frame_seq": -1,
+        "frame_valid": false,
+        "kind": "rename",
+        "len": -1,
+        "nth": 1,
+        "off": -1,
+        "path": "/workspace/verification/results/run-final/work/checkpoint-corrupt-after-rename/source/checkpoint.lmi",
+        "path2": "/workspace/verification/results/run-final/work/checkpoint-corrupt-after-rename/source/.lamina-image-245263966",
+        "phase": "entry",
+        "result": null,
+        "size_after": null
+      },
+      {
+        "frame_crc_ok": false,
+        "frame_kind": "",
+        "frame_seq": -1,
+        "frame_valid": false,
+        "kind": "rename",
+        "len": -1,
+        "nth": 1,
+        "off": -1,
+        "path": "/workspace/verification/results/run-final/work/checkpoint-corrupt-after-rename/source/checkpoint.lmi",
+        "path2": "/workspace/verification/results/run-final/work/checkpoint-corrupt-after-rename/source/.lamina-image-245263966",
+        "phase": "exit",
+        "result": 0,
+        "size_after": 1069
+      }
+    ],
+    "fault": {
+      "at": "kill-after",
+      "event": "fault",
+      "kind": "rename",
+      "nth": 1,
+      "path": "/workspace/verification/results/run-final/work/checkpoint-corrupt-after-rename/source/checkpoint.lmi",
+      "path2": "/workspace/verification/results/run-final/work/checkpoint-corrupt-after-rename/source/.lamina-image-245263966",
+      "t_ns": 92195150217173,
+      "ts_ms": 38.719
+    },
+    "mutations": [
+      {
+        "event": "flip_applied",
+        "from": 58,
+        "offset": 534,
+        "path": "/workspace/verification/results/run-final/work/checkpoint-corrupt-after-rename/source/checkpoint.lmi",
+        "to": 197,
+        "written": 1
+      }
+    ],
+    "snapshots": [
+      {
+        "event": "snapshot_dir",
+        "path": "/workspace/verification/results/run-final/work/checkpoint-corrupt-after-rename/source",
+        "tag": "atfault"
+      },
+      {
+        "bytes": 1069,
+        "copy": "/workspace/verification/results/run-final/cases/checkpoint-corrupt-after-rename/artifacts/fault-snapshot/checkpoint.lmi.atfault",
+        "event": "snapshot_file",
+        "path": "/workspace/verification/results/run-final/work/checkpoint-corrupt-after-rename/source/checkpoint.lmi",
+        "tag": "atfault"
+      },
+      {
+        "bytes": 1340,
+        "copy": "/workspace/verification/results/run-final/cases/checkpoint-corrupt-after-rename/artifacts/fault-snapshot/journal.lmw.atfault",
+        "event": "snapshot_file",
+        "path": "/workspace/verification/results/run-final/work/checkpoint-corrupt-after-rename/source/journal.lmw",
+        "tag": "atfault"
+      },
+      {
+        "bytes": 0,
+        "copy": "/workspace/verification/results/run-final/cases/checkpoint-corrupt-after-rename/artifacts/fault-snapshot/lamina.lock.atfault",
+        "event": "snapshot_file",
+        "path": "/workspace/verification/results/run-final/work/checkpoint-corrupt-after-rename/source/lamina.lock",
+        "tag": "atfault"
+      }
+    ],
+    "target_exit": [
+      {
+        "code": 0,
+        "event": "target_exit",
+        "exited": false,
+        "signal": 9,
+        "ts_ms": 69.581
+      }
+    ]
+  },
+  "fault_fired": true,
+  "group": "checkpoint",
+  "observation": {
+    "durable_floor": {
+      "row_keys": [],
+      "sequence": null
+    },
+    "exit_code": 1,
+    "log_tail": "2026/11/18 07:50:35 ERROR lamina stopped error=\"checkpoint: invalid character '\\\\xc5' after object key\"\n",
+    "oracle": {
+      "checkpoint_valid": false,
+      "durable_sequences": [],
+      "head": null,
+      "image_sequence": null,
+      "journal_sequence_end": null,
+      "outcome": "refuse",
+      "reason": "checkpoint invalid: envelope json: 'utf-8' codec can't decode byte 0xc5 in position 534: invalid continuation byte",
+      "relations": [],
+      "rows": {},
+      "tail_bytes": 0
+    },
+    "started": false
+  },
+  "observations": {
+    "checkpoint_confirmed": false,
+    "checkpoint_head": 4,
+    "checkpoint_http_body": {
+      "detail": "Remote end closed connection without response",
+      "transport": "RemoteDisconnected"
+    },
+    "checkpoint_http_body_1": {
+      "detail": "Remote end closed connection without response",
+      "transport": "RemoteDisconnected"
+    },
+    "checkpoint_http_status": null,
+    "checkpoint_http_status_1": null,
+    "checkpoint_responses": [
+      {
+        "body": {
+          "detail": "Remote end closed connection without response",
+          "transport": "RemoteDisconnected"
+        },
+        "status": null
+      }
+    ],
+    "classification": "refused_after_unconfirmed_checkpoint",
+    "classification_detail": "checkpoint invalid: envelope json: 'utf-8' codec can't decode byte 0xc5 in position 534: invalid continuation byte",
+    "post_fault_checkpoint": {
+      "error": "envelope json: 'utf-8' codec can't decode byte 0xc5 in position 534: invalid continuation byte",
+      "present": true,
+      "valid": false
+    },
+    "post_fault_files": {
+      "checkpoint.lmi": {
+        "sha256": "dca577663c7778753d31ff82704c5ebbcf0022808c01fb6ab44cfc7039855d98",
+        "size": 1069
+      },
+      "journal.lmw": {
+        "sha256": "40d3ec1aad83c2de7816d95b6a775d173da55bd95e8286917b0b3aec917f22f7",
+        "size": 1340
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "post_recovery_checkpoint": {
+      "error": "envelope json: 'utf-8' codec can't decode byte 0xc5 in position 534: invalid continuation byte",
+      "present": true,
+      "valid": false
+    },
+    "post_recovery_files": {
+      "checkpoint.lmi": {
+        "sha256": "dca577663c7778753d31ff82704c5ebbcf0022808c01fb6ab44cfc7039855d98",
+        "size": 1069
+      },
+      "journal.lmw": {
+        "sha256": "40d3ec1aad83c2de7816d95b6a775d173da55bd95e8286917b0b3aec917f22f7",
+        "size": 1340
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "pre_fault_files": {
+      "checkpoint.lmi": {
+        "sha256": "67e9a3a74b1001135e225ceca05b7658817832a455f886a4e4ac9c4f38e245c0",
+        "size": 725
+      },
+      "journal.lmw": {
+        "sha256": "40d3ec1aad83c2de7816d95b6a775d173da55bd95e8286917b0b3aec917f22f7",
+        "size": 1340
+      },
+      "lamina.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    "refusal_cause": "damaged checkpoint; the journal alone covers the lost suffix, but the documented rule is to refuse rather than silently ignore a checkpoint",
+    "setup_head": 3
+  },
+  "path_under_test": "checkpoint-replacement",
+  "stop": "kill-after:1:rename",
+  "tracer_exit": 0,
+  "trigger_result": [
+    {
+      "body": {
+        "detail": "Remote end closed connection without response",
+        "transport": "RemoteDisconnected"
+      },
+      "status": null
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+/workspace/verification/results/run-final/work/checkpoint-twice-kill-in-second-rename/source:
+total 12
+drwxrwxrwx 1 1000 1000  192 2026-11-18 07:50:36.501108082 +0000 .
+drwxrwxrwx 1 1000 1000   96 2026-11-18 07:50:36.456466031 +0000 ..
+-rw------- 1 1000 1000 1069 2026-11-18 07:50:36.501355334 +0000 .lamina-image-399936309
+-rw------- 1 1000 1000 1069 2026-11-18 07:50:36.497883560 +0000 checkpoint.lmi
+-rw------- 1 1000 1000 1340 2026-11-18 07:50:36.495160042 +0000 journal.lmw
+-rw------- 1 1000 1000    0 2026-11-18 07:50:36.461049937 +0000 lamina.lock

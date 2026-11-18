@@ -1,0 +1,7 @@
+/workspace/verification/results/run-final/work/commit-abort-after-fsync/source:
+total 8
+drwxrwxrwx 1 1000 1000  160 2026-11-18 07:49:31.430517086 +0000 .
+drwxrwxrwx 1 1000 1000   96 2026-11-18 07:49:31.400671968 +0000 ..
+-rw------- 1 1000 1000  725 2026-11-18 07:49:31.428650281 +0000 checkpoint.lmi
+-rw------- 1 1000 1000 1340 2026-11-18 07:49:31.438169554 +0000 journal.lmw
+-rw------- 1 1000 1000    0 2026-11-18 07:49:31.404893329 +0000 lamina.lock
